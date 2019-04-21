@@ -2,7 +2,7 @@
   <div id="{{maps[map]['targetid']}}"
        class="box-3d" ng-class="{'box-click': !maps[map]['mdlshow']}">
     <div class="fill" ng-if="!maps[map]['mdlshow']" ng-click="openmodel()">
-      <img align="center" src="static/images/icons-3d.png" class="icon"></img>
+      <img align="center" src="../../images/icons/icons-3d.png" class="icon"></img>
     </div>
     <span class="glyphicon glyphicon-remove close"
           ng-show="maps[map]['mdlshow']" ng-click="closemodels()"></span>
@@ -18,9 +18,9 @@
       </div>
       <div class="controls" ng-show="cshow || controlsGlimpse3d" ng-mouseleave="cshow=false">
         <div class="controls3d" ng-mouseenter="cshow=true" ng-mouseleave="cshow=false">
-          <img src="static/images/icons-lcrot.png"/>
-          <img src="static/images/icons-mczoom.png"/>
-          <img src="static/images/icons-rcpan.png"/>
+          <img src="../../images/icons/icons-lcrot.png"/>
+          <img src="../../images/icons/icons-mczoom.png"/>
+          <img src="../../images/icons/icons-rcpan.png"/>
         </div>
       </div>
     </div>

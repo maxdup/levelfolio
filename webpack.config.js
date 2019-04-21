@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
@@ -7,8 +8,14 @@ module.exports = {
     app: './src/app.js',
   },
   output: {
-    path: __dirname + '/dist',
-    filename: '[name].[contenthash].bundle.js'
+    publicPath: '/',
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    inline: true,
+    port: 8080,
+    stats: 'errors-only',
+    historyApiFallback: true
   },
   module: {
     rules: [{

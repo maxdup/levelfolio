@@ -54,7 +54,7 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
         image = '';
       }
       return ModalService.showModal({
-        templateUrl: "static/partials/modal_image.html",
+        template: require("../partials/widgets/modal_image.html"),
         controller: "ModalController"
       }).then(function(modal) {
         $scope.modal = modal;
@@ -70,7 +70,7 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
         id = '';
       }
       return ModalService.showModal({
-        templateUrl: "static/partials/modal_carousel.html",
+        template: require("../partials/widgets/modal_carousel.html"),
         controller: "ModalController"
       }).then(function(modal) {
         var boxcarousel, carousel, overlay;
@@ -150,7 +150,7 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
           scene.add(object);
           materials_blueprint = [["c1", 0, 0.75, 0.25, 35, -90], ["c2", 0, 0.5, 0.25, 35, -90], ["c3", 0, 0.25, 0.25, 35, -90], ["c4", 0, 0, 0.25, 35, -90], ["cr", 0.25, 0.75, 0.25, 35, -90], ["cb", 0.25, 0.25, 0.25, 35, -90], ["cn", 0.25, 0.5, 0.25, 35, -90], ["pa", 0.25, 0.125, 0.125, 15, -90], ["ph", 0.375, 0.125, 0.125, 15, -90], ["rb", 0.5, 0, 0.5, 45, -30], ["rr", 0.5, 0.5, 0.5, 45, -30]];
           materials = {};
-          textureLoader.load("static/images/spritesheet.png", function(texture) {
+          textureLoader.load("../images/icons/spritesheet.png", function(texture) {
             var ent, geometry, mat, particle, sprite, sprite_shade, sprite_solid, vert, _i, _j, _len, _len1, _ref, _results;
             for (_i = 0, _len = materials_blueprint.length; _i < _len; _i++) {
               mat = materials_blueprint[_i];
