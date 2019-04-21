@@ -23,10 +23,12 @@ angular.module(rootModule, ['ui.bootstrap', 'ngCookies'])
     } else {
       $scope.active_lang = $translate.use();
     }
-    /*$(".content").mousewheel(function(event, delta) {
-      this.scrollLeft -= delta * 60;
-      return event.preventDefault();
-    });*/
+    angular.element(document.querySelector('.content'))
+      .bind('mousewheel', function(event, delta){
+        this.scrollLeft += event.originalEvent.deltaY;
+        event.preventDefault();
+      });
+
     $templateCache.put('nav', require('../partials/nav.html'));
 
     $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
@@ -325,7 +327,8 @@ angular.module(rootModule, ['ui.bootstrap', 'ngCookies'])
     '$scope', 'close', function($scope, close) {
       return $scope.close = close;
     }
-  ]).directive("box3d", function($animate, $timeout) {
+  ])
+  .directive("box3d", function($animate, $timeout) {
     return {
       restrict: 'E',
       template: require('../partials/widgets/box3d.html'),

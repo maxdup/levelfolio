@@ -18,27 +18,34 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
         material, render, renderer, scene, scene2, showHUD;
 
     $scope.queue();
-    var iso = new Isotope('.boxes',{
-      layoutMode: 'masonryHorizontal',
-      itemSelector: '.box',
-      getSortData: {
-        order: '[important] parseInt'
-      },
-      sortBy: 'order',
-      masonryHorizontal: {
-        rowHeight: 200
-      }
-    });
+
+    console.log(iso);
+    var iso;
+
     $scope.layout = function() {
+      iso = new Isotope('.boxes',{
+        layoutMode: 'masonryHorizontal',
+        OBitemSelector: '.box',
+        getSortData: {
+          order: '[important] parseInt'
+        },
+        sortBy: 'order',
+        masonryHorizontal: {
+          rowHeight: 200
+        }
+      });
+
       iso.updateSortData();
       iso.layout();
     };
-    $scope.layout();
+    //$scope.layout();
+
     $scope.reload = function() {
       iso.reloadItems();
       //$('.boxes').isotope('reloadItems');
-      return $scope.layout();
+      $scope.layout();
     };
+
     $scope.$on('isotopeReload', function(event, next, current) {
       return $scope.reload();
     });
