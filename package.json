@@ -1,0 +1,49 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "A level design portfolio",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "PORT=4000 webpack-dev-server --open --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxdup/portfolio.git"
+  },
+  "author": "maxdup",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/maxdup/portfolio/issues"
+  },
+  "homepage": "https://mdupuis.com",
+  "devDependencies": {
+    "angular-translate-loader": "^1.6.2",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "html-loader": "^0.5.5",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "dependencies": {
+    "angular-animate": "^1.7.8",
+    "angular-cookies": "^1.7.8",
+    "angular-modal-service": "^0.15.2",
+    "angular-route": "^1.7.8",
+    "angular-translate": "^2.18.1",
+    "angular-ui-bootstrap": "^2.5.6",
+    "angularjs": "0.0.1",
+    "favicons-webpack-plugin": "0.0.9",
+    "imagefill": "0.0.3",
+    "install": "^0.12.2",
+    "isotope-layout": "^3.0.6",
+    "isotope-masonry-horizontal": "^2.0.1",
+    "jquery": "^3.4.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "masonry-layout": "^4.2.2",
+    "npm": "^6.9.0",
+    "three": "^0.103.0"
+  }
+}
