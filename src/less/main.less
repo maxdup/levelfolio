@@ -354,14 +354,62 @@ a.box {
     cursor: pointer;
     border: 2px solid black;
     text-decoration: none;
-
+    background: #000000;
+    transition: background 0.2s;
     &:hover {
         background: #202020;
-        border: 2px solid black;
         text-decoration: none;
     }
     &:active { text-decoration: none; }
     &:focus { text-decoration: none; }
+}
+.box-photo {
+    height: 100%;
+    width: 340px;
+    max-height: 590px;
+    overflow: hidden;
+    position: relative;
+    >img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    >img.title {
+        top: initial;
+        right: initial;
+        position: absolute;
+        height: auto;
+        width: 290px;
+        bottom: 0;
+        object-fit: unset;
+    }
+
+}
+a.box.box-photo {
+    border: none;
+    &:before {
+        content: '';
+        position: absolute;
+        background: white;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        border: 2px solid black;
+        opacity: 0;
+        z-index: 4;
+        transition: opacity 0.2s;
+    }
+    &:hover {
+        &:before {
+            opacity: 0.05;
+        }
+    }
 }
 
 .box-w1 { width: 290px; }
@@ -585,10 +633,10 @@ a.box {
         margin-top: 0;
         height: 90%;
         max-height: 1080px;
-        &:nth-of-type(2n) { width: 390px; }
-        &:nth-of-type(3n) { width: 340px; }
-        &:nth-of-type(4n) { width: 290px; }
-        &:nth-of-type(5n) { width: 240px; }
+        &:nth-of-type(1n) { width: 390px; }
+        &:nth-of-type(2n) { width: 340px; }
+        &:nth-of-type(3n) { width: 290px; }
+        &:nth-of-type(4n) { width: 240px; }
         &:nth-child(odd){
             margin-top: 40px;
         }
@@ -745,80 +793,6 @@ a.box {
     bottom: 0;
     right: 0;
 }
-
-
-
-.box-photo, .box-map-thumbnail {
-    height: 100%;
-    width: 340px;
-    max-height: 590px;
-    >img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-}
-
-.box-map-thumbnail {
-    position: relative;
-    height: 90%;
-    max-height: 540px;
-    a {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-        box-sizing: border-box;
-        cursor: pointer;
-
-        z-index: 2;
-
-        &:before {
-            content: '';
-            position: absolute;
-            background: white;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            top: 0;
-            border: 2px solid black;
-            opacity: 0;
-        }
-        &:hover {
-            &:before {
-                opacity: 0.05;
-            }
-        }
-        img {
-            position: absolute;
-            height: auto;
-            width: 290px;
-            bottom: 0;
-        }
-    }
-
-}
-
-
-.box-click {
-    cursor: pointer;
-    border: 2px solid black;
-
-    &:hover {
-        background: #202020;
-        border: 2px solid black;
-        text-decoration: none;
-    }
-    &:active { text-decoration: none; }
-    &:focus { text-decoration: none; }
-}
-
 .slides_control {
     height: 100%;
 }

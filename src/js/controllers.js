@@ -19,13 +19,12 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
 
     $scope.queue();
 
-    console.log(iso);
     var iso;
 
     $scope.layout = function() {
       iso = new Isotope('.boxes',{
         layoutMode: 'masonryHorizontal',
-        OBitemSelector: '.box',
+        itemSelector: '.box',
         getSortData: {
           order: '[important] parseInt'
         },
@@ -38,11 +37,10 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
       iso.updateSortData();
       iso.layout();
     };
-    //$scope.layout();
+    $scope.layout();
 
     $scope.reload = function() {
       iso.reloadItems();
-      //$('.boxes').isotope('reloadItems');
       $scope.layout();
     };
 
@@ -52,10 +50,6 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
     $scope.$on('isotopeLayout', function(event, next, current) {
       return $scope.layout();
     });
-    /*$('.box-photo').imagefill({
-      runOnce: true
-      });*/
-
     $scope.viewimagemodal = function(image) {
       if (image == null) {
         image = '';
