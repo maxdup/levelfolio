@@ -150,6 +150,16 @@ nav {
     }
 }
 
+.icon {
+    color: white;
+    fill: white;
+    height: 40px;
+    width: 40px;
+    svg.octicon {
+        color: white;
+        fill: white;
+    }
+}
 .container {
     display: table;
     position: absolute;
@@ -158,92 +168,12 @@ nav {
     padding: 0;
     margin-left: 0;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-}
-.container.ng-hide {
-    margin-left: 100%;
-    opacity: 0;
-}
-
-.controls {
-    position: absolute;
-    min-height: 90px;
-    margin: auto;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 1;
-    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-    .controls360 {
-        display: inline-block;
-        bottom: 0;
-        max-width: 20%;
-        min-width: 75px;
-        min-height: 75px;
-        margin-top: 10px;
-        color: white;
-        font-size: 50px;
-        span {
-            opacity: 0.5;
-            min-height: 75px;
-        }
-        img {
-            width: 47%;
-            height: auto;
-        }
-
-    }
-    .controls3d {
-        .controls360;
-        width: 100%;
-        max-width: 100%;
-        img {
-            width: 22%;
-            height: auto;
-        }
-    }
     &.ng-hide {
+        margin-left: 100%;
         opacity: 0;
-        bottom: -200px;
     }
 }
 
-
-.container-pullback {
-    position: absolute;
-    height: 300px;
-    width: 100px;
-    top: 0; bottom: 0; right: 0; left: 0;
-    margin: auto;
-    margin-right: 20px;
-    font-size: 300px;
-    color: white;
-    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-    .glyphicon {
-        opacity: 0.5;
-        cursor: pointer;
-        margin-left: -100px;
-        .transform(scale(0.4,1));
-        &:hover {
-            opacity: 1;
-        }
-    }
-}
-.container-pullback.ng-hide {
-    margin-right: 100%;
-    opacity: 0;
-}
-.container-curtain {
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: black;
-    opacity: 1;
-    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-}
-.container-curtain.ng-hide{
-    opacity: 0;
-}
 
 .page-base {
     position: relative;
@@ -694,6 +624,100 @@ a.box.box-photo {
     .box-cv { .box-h12; }
 }
 
+#panorama {
+    .container-pullback {
+        position: absolute;
+        height: 300px;
+        width: 100px;
+        top: 0; bottom: 0; right: 0; left: 0;
+        margin: auto;
+        margin-right: 20px;
+        margin-top: 75px;
+        font-size: 300px;
+        color: white;
+        transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+
+        &.ng-hide {
+            margin-right: 100%;
+            opacity: 0;
+        }
+
+        .icon {
+            svg {
+                display: block;
+                opacity: 0.5;
+                height: 100px;
+                width: auto;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .container-curtain {
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background: black;
+        opacity: 1;
+        transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+        &.ng-hide {
+            opacity: 0;
+        }
+    }
+}
+
+.controls {
+    position: absolute;
+    min-height: 90px;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 1;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+
+    .controls360 {
+        display: inline-block;
+        bottom: 0;
+        max-width: 20%;
+        min-width: 75px;
+        min-height: 75px;
+        margin-top: 10px;
+        color: white;
+        font-size: 50px;
+        span {
+            opacity: 0.5;
+            min-height: 75px;
+        }
+        img {
+            width: 47%;
+            height: auto;
+        }
+        .icon {
+            display: inline-block;
+            svg {
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+    }
+    .controls3d {
+        .controls360;
+        width: 100%;
+        max-width: 100%;
+        img {
+            width: 22%;
+            height: auto;
+        }
+    }
+    &.ng-hide {
+        opacity: 0;
+        bottom: -200px;
+    }
+}
 
 
 .box-carousel {

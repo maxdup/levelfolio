@@ -1,11 +1,11 @@
 <div id="panorama">
   <div class="container-pullback" ng-show="focus">
-    <span class="glyphicon glyphicon-menu-right" style="font-size:300px;" ng-click="v360()">
+    <div class="icon" ng-bind-html="icon_chevron" ng-click="v360()"></div>
   </div>
   <div class="controls" ng-show="focus">
     <div class="controls" ng-show="!cshow && !controlsGlimpse">
-      <div class="controls360">
-        <span class="glyphicon glyphicon-info-sign" ng-mouseenter="cshow=true"/>
+      <div class="controls360" ng-mouseenter="cshow=true">
+        <div class="icon" ng-bind-html="icon_info"></div>
       </div>
     </div>
     <div class="controls" ng-show="cshow || controlsGlimpse" ng-mouseleave="cshow=false">
@@ -15,4 +15,5 @@
       </div>
     </div>
   </div>
+  <div id="curtain" class="container-curtain" ng-hide="show"></div>
 </div>

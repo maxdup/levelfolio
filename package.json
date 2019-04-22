@@ -4,7 +4,7 @@
   "description": "A level design portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --config webpack.config.js",
     "start": "PORT=4000 webpack-dev-server --open --config webpack.config.js"
   },
   "repository": {
@@ -44,6 +44,7 @@
     "less-loader": "^4.1.0",
     "masonry-layout": "^4.2.2",
     "npm": "^6.9.0",
+    "octicons": "^8.5.0",
     "three": "^0.103.0"
   }
 }

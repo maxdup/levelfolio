@@ -1,6 +1,6 @@
 var THREE = require('three');
 
-function map_panorama($window, $timeout){
+function map_panorama($window, $timeout, $sce){
   return {
     restrict: 'E',
     template: require('../../partials/widgets/map-panorama.html'),
@@ -9,6 +9,9 @@ function map_panorama($window, $timeout){
       focus: '='
     },
     link: function(scope, element) {
+      scope.icon_info = $sce.trustAsHtml(require('octicons')['info'].toSVG());
+      scope.icon_chevron = $sce.trustAsHtml(require('octicons')['chevron-right'].toSVG());
+
       var camera, hidecontrols, isUserInteracting, lat, lon, material,
           mesh,
           onMouseDownLat, onMouseDownLon, onPointerDownLat,
@@ -61,8 +64,8 @@ function map_panorama($window, $timeout){
       scope.heldControl = false;
 
       scope.v360 = function() {
-        scope.v360focus = !scope.v360focus;
-        if (!scope.v360focus) {
+        scope.focus = !scope.focus;
+        if (!scope.focus) {
           scope.heldControl = false;
         }
       };
