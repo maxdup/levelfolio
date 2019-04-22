@@ -1,5 +1,5 @@
 <!--main-->
-<box-main class="box box-main" map="vanguard" maps="maps"> </box-main>
+<map-summary map="maps['vanguard']"></map-summary>
 
 <!--3D-->
 <!--box3d map="vanguard" maps="maps"/-->
@@ -18,14 +18,12 @@
 </div-->
 
 <!--update page-->
-<a class="box box-quote box-click" href="http://www.teamfortress.com/toughbreak/" target="_blank">
-  <div class="quote">
-    {{'toughbreak' | translate}}<b>{{'toughbreak2' | translate}}</b>
-    <div class="date">(17/12/2015)</div>
-  </div>
+<a class="box box-quote" href="http://www.teamfortress.com/toughbreak/" target="_blank">
+  {{'toughbreak' | translate}}<b>{{'toughbreak2' | translate}}</b>
+  <div class="date">(17/12/2015)</div>
 </a>
 
 <!--360-->
-<!--div class="box box-360" ng-click="change360('vanguard')">
-  <img align="center" src="../../images/icons/icons-360.png"></img>
-</div-->
+<a class="box box-icon" ng-click="go_panorama(maps['vanguard'])">
+  <img src="../../images/icons/icons-360.png"></img>
+</a>

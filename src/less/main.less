@@ -2,13 +2,14 @@
     width: 1000px;
 }
 body {
-    margin: 0px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-}
-#portfolio>canvas {
-    max-height:100%;
-    max-width: 100%;
     overflow: hidden;
+    margin: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    &>canvas {
+        max-height:100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
 }
 
 nav {
@@ -363,6 +364,15 @@ a.box {
     &:active { text-decoration: none; }
     &:focus { text-decoration: none; }
 }
+.box-icon {
+    img{
+        display: block;
+        margin: auto;
+        height:100%;
+        width: auto;
+    }
+}
+
 .box-photo {
     height: 100%;
     width: 340px;
@@ -450,6 +460,7 @@ a.box.box-photo {
 }
 .box-blurb {
     .box-wx;
+    .blurb;
     overflow: auto;
     position: relative;
 
@@ -633,17 +644,18 @@ a.box.box-photo {
         margin-top: 0;
         height: 90%;
         max-height: 1080px;
-        &:nth-of-type(1n) { width: 390px; }
-        &:nth-of-type(2n) { width: 340px; }
-        &:nth-of-type(3n) { width: 290px; }
-        &:nth-of-type(4n) { width: 240px; }
+        &:nth-of-type(1n) { width: 440px; }
+        &.box-photo:nth-of-type(1n) { width: 390px; }
+        &.box-photo:nth-of-type(2n) { width: 340px; }
+        &.box-photo:nth-of-type(3n) { width: 290px; }
+        &.box-photo:nth-of-type(4n) { width: 240px; }
         &:nth-child(odd){
             margin-top: 40px;
         }
     }
 }
 #code {
-    .box-blurb {
+    .box {
         height: 100%;
         &:last-child {
             .box-h2;
@@ -772,20 +784,6 @@ a.box.box-photo {
 @keyframes spin {
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
-}
-
-.box-360 {
-    cursor: pointer;
-    img{
-        display: block;
-        margin: auto;
-        height:100%;
-        width: auto;
-    }
-    &:hover {
-        background: #202020;
-        border: 2px solid black;
-    }
 }
 
 .play {

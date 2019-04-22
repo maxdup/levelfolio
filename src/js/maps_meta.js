@@ -1,5 +1,6 @@
 var maps = {
   vanguard: {
+    name: 'vanguard',
     order: 0,
     partial: "vanguard",
     mdlurl: '../models/vanguard.obj',
@@ -41,6 +42,7 @@ var maps = {
     panorama: require('../images/vanguard/cp_vanguard360.jpg')
   },
   hadal: {
+    name: 'hadal',
     order: 2,
     partial: "hadal",
     mdlurl: '../models/hadal.obj',
@@ -75,6 +77,7 @@ var maps = {
     panorama: require('../images/hadal/cp_hadal360.jpg')
   },
   occult: {
+    name: 'occult',
     order: 1,
     partial: "occult",
     mdlurl: '../models/occult.obj',
@@ -101,6 +104,7 @@ var maps = {
     panorama: require('../images/occult/koth_occult360.jpg')
   },
   effigy: {
+    name: 'effigy',
     order: 3,
     partial: "effigy",
     workid: "543841027",

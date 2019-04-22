@@ -4,45 +4,26 @@
   <meta charset="utf-8">
   <title>Maxime Dupuis</title>
   <base href="/"/>
-  <!--link href="static/css/main.min.css" rel="stylesheet"/-->
-  <!--script src="static/bower_components/jquery/dist/jquery.min.js"></script-->
-  <!--script src="static/js/jqextras.js"></script-->
-  <!--script src="static/js/angular.js"></script-->
-  <!--script src="static/js/three.js"></script-->
-  <!--script src="static/js/meta.js"></script-->
-  <!--script src="static/js/main.min.js"></script-->
-
 </head>
 
-<body ng-controller="RootController" style="overflow:hidden;">
-  <div id="portfolio">
-    <div class="container-pullback" ng-show="v360focus">
-      <span class="glyphicon glyphicon-menu-right" style="font-size:300px;" ng-click="v360()">
-    </div>
-    <div class="controls" ng-show="v360focus">
-      <div class="controls" ng-show="!cshow && !controlsGlimpse">
-        <div class="controls360">
-          <span class="glyphicon glyphicon-info-sign" ng-mouseenter="cshow=true"/>
-        </div>
-      </div>
-      <div class="controls" ng-show="cshow || controlsGlimpse" ng-mouseleave="cshow=false">
-        <div class="controls360" ng-mouseenter="cshow=true" ng-mouseleave="cshow=false">
-          <img src="./images/icons/icons-lcpan.png"/>
-          <img src="./images/icons/icons-mczoom.png"/>
-        </div>
-      </div>
-    </div>
-    <div id="curtain" class="container-curtain" ng-hide="show"></div>
-    <div class="container" ng-hide="v360focus">
-      <div class="page-margin" ng-click="v360()"></div>
-      <div class="page-centering">
-        <div class="page-background"></div>
-        <div class="page">
-          <div ng-include="'nav'"></div>
-          <div class="content">
-            <div class="scrollbox">
-              <div ng-view ng-class="{ reverse: reverse}" class="scrollbox-padded view"></div>
-            </div>
+<body ng-controller="RootController">
+  <!-- Map panoramas -->
+  <map-panorama ng-model="current_panorama"
+                focus="$root.focus360">
+  </map-panorama>
+
+  <!-- Page content -->
+  <div class="container" ng-hide="$root.focus360">
+    <div class="page-margin" ng-click="go_panorama()"></div>
+    <div class="page-centering">
+      <div class="page-background"></div>
+      <div class="page">
+        <!-- Navigation -->
+        <div ng-include="'nav'"></div>
+        <div class="content">
+          <div class="scrollbox">
+            <div ng-view ng-class="{ reverse: reverse}"
+                 class="scrollbox-padded view"></div>
           </div>
         </div>
       </div>

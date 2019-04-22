@@ -1,7 +1,7 @@
 <!--main-->
-<box-main class="box box-main" map="occult" maps="maps"> </box-main>
+<map-summary map="maps['occult']"></map-summary>
 
-<!--360-->
+<!--3d-->
 <!--box3d map="occult" maps="maps"/-->
 
 <!--carousel-->
@@ -18,18 +18,14 @@
 </div-->
 
 <!--quote-->
-<div class="box box-click box-quote" ng-click="viewimagemodal('static/images/pcgamer.jpg')">
-  <div class="quote">
-    <a>
-      <i>{{'pcgamer' | translate}}</i> <br />-PCGamer
-    </a>
-    <div class="date">(2015, April)</div>
-  </div>
-</div>
+<a class="box box-quote" ng-click="viewimagemodal('static/images/pcgamer.jpg')">
+  <i>{{'pcgamer' | translate}}</i> <br />-PCGamer
+  <div class="date">(2015, April)</div>
+</a>
 
-<!--3D-->
-<!--div class="box box-360" ng-click="change360('occult')">
-  <img align="center" src="../../images/icons/icons-360.png"></img>
-</div-->
+<!--360-->
+<a class="box box-icon" ng-click="go_panorama(maps['occult'])">
+  <img src="../../images/icons/icons-360.png"></img>
+</a>
 
 <div class="box box-separator"/>

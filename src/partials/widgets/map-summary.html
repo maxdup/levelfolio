@@ -1,0 +1,57 @@
+<div class="box box-main">
+  <div class="install-box">
+    <div class="blurb">
+      <img class="title" ng-src="{{map['title']}}"></img>
+      <p>{{ map.name | translate}}</p>
+    </div>
+    <div class="install">
+      <a class="play" ng-click="install = !install">{{'wanttoplay' | translate}}</a>
+    </div>
+    <div class="install" ng-show="install">
+      <div>
+        <h3>{{'instructions' | translate}}</h3>
+        <ol class="instructions">
+          <li>
+            <a href="http://store.steampowered.com/about/" target="_blank">
+              {{'install-1' | translate}}</a>
+          </li>
+          <li>
+            <a href="steam://install/440" target="_blank">
+              {{'install-2' | translate}}</a>
+          </li>
+          <li ng-if="map['level'] == 0">
+            <a href="steam://url/CommunityFilePage/{{map['workid']}}" target="_blank">
+              {{'install-3' | translate}}</a>
+            <span class="glyphicon glyphicon glyphicon-exclamation-sign"
+                  uib-popover-template="'poptemplate3.html'" popover-title="Notes"
+                  popover-trigger="'outsideClick'">
+            </span>
+
+          </li>
+          <li>
+            <a href="steam://run/440//+map%20{{map['level']==0 ? 'workshop%2f':''}}{{map['workid']}}" target="_blank">
+              {{'install-4' | translate}}</a>
+            <span class="glyphicon glyphicon glyphicon-exclamation-sign"
+                  uib-popover-template="'poptemplate4.html'" popover-title="Notes"
+                  popover-trigger="'outsideClick'">
+            </span>
+          </li>
+        </ol>
+        <span class="glyphicon glyphicon-chevron-down" ng-click="install = !install"></span>
+      </div>
+    </div>
+    <script type="text/ng-template" id="poptemplate4.html">
+      <div>
+        {{'install-4-warn' | translate}}
+        <br/>
+        {{'install-4-alt' | translate}}
+      </div>
+    </script>
+    <script type="text/ng-template" id="poptemplate3.html">
+      <div>
+        {{'install-3' | translate}}
+        {{'install-3-alt' | translate}} <a href="http://steamcommunity.com/sharedfiles/filedetails/?id={{map['workid']}}" target="_blank">{{'install-3-alt2' | translate}}</a>
+      </div>
+    </script>
+  </div>
+</div>

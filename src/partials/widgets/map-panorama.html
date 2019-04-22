@@ -1,0 +1,18 @@
+<div id="panorama">
+  <div class="container-pullback" ng-show="focus">
+    <span class="glyphicon glyphicon-menu-right" style="font-size:300px;" ng-click="v360()">
+  </div>
+  <div class="controls" ng-show="focus">
+    <div class="controls" ng-show="!cshow && !controlsGlimpse">
+      <div class="controls360">
+        <span class="glyphicon glyphicon-info-sign" ng-mouseenter="cshow=true"/>
+      </div>
+    </div>
+    <div class="controls" ng-show="cshow || controlsGlimpse" ng-mouseleave="cshow=false">
+      <div class="controls360" ng-mouseenter="cshow=true" ng-mouseleave="cshow=false">
+        <img src="../../images/icons/icons-lcpan.png"/>
+        <img src="../../images/icons/icons-mczoom.png"/>
+      </div>
+    </div>
+  </div>
+</div>
