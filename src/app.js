@@ -40,6 +40,10 @@ angular.module('folioApp', ['ui.router', localeModule, 'ngCookies',
         controller: 'PageController',
         template: require('./partials/pages/hobby.html')
       })
+      .state('hobby.id',{
+        url: '/:map',
+        params: {'map': null}
+      })
       .state('code',{
         url: '/code',
         auto: true,
