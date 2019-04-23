@@ -1,5 +1,4 @@
 var THREE = require('three');
-import maps from './maps_meta.js';
 
 function rootController(
   $rootScope, $scope, $state, $transitions, $timeout, $templateCache) {
@@ -11,25 +10,31 @@ function rootController(
       onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, phi,
       renderer, routes, scene, theta, w;
 
-  angular.element(document.querySelector('.content'))
-    .bind('mousewheel', function(event, delta){
-      this.scrollLeft += event.originalEvent.deltaY;
+  // Horizontal scrolling
+  var page = document.querySelector('.page');
+  var content = document.querySelector('.content');
+  angular.element(page).bind('mousewheel', function(event, delta){
+      content.scrollLeft += event.originalEvent.deltaY;
       event.preventDefault();
     });
 
+  // Include templates
   $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
   $templateCache.put('effigy', require('../partials/maps/effigy.html'));
   $templateCache.put('occult', require('../partials/maps/occult.html'));
   $templateCache.put('hadal', require('../partials/maps/hadal.html'));
 
-  $scope.maps = maps;
+  // Load maps data
+  $scope.maps = require('./maps_meta.js').default;
 
-  $scope.current_panorama = maps['vanguard'];
+  // Load Panorama
+  $scope.current_panorama = $scope.maps['vanguard'];
   $scope.go_panorama = function(map) {
     $rootScope.focus360 = true;
     if (map){ $scope.current_map = map; }
   }
 
+  // Routing routines
   var states = $state.get();
   $transitions.onStart({}, function(transition){
     // Determine route change direction
