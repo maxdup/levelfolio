@@ -30,44 +30,7 @@ function pageController(
     }
   }
   queue();
-  $scope.layoutLast = function(isLast){
-    if (isLast) { $scope.layout(); }
-  }
-  $scope.layout = function() {
-    $scope.iso = new Isotope('.boxes',{
-      layoutMode: 'masonryHorizontal',
-      itemSelector: '.box',
-      getSortData: {
-        order: '[important] parseInt'
-      },
-      sortBy: 'order',
-      masonryHorizontal: {
-        rowHeight: 200
-      }
-    });
-    if ($scope.iso.element){
-      $scope.iso.updateSortData();
-      $scope.iso.layout();
-    }
-  };
-  if ($state.current.auto){
-    $scope.$on('$viewContentLoaded', function() {
-      $scope.layout();
-    });
-  }
-  $scope.reload = function() {
-    $scope.iso.reloadItems();
-    $scope.layout();
-  };
 
-  $scope.$on('isotopeReload', function(event, next, current) {
-    // for when a 3d item changed size
-    return $scope.reload();
-  });
-  $scope.$on('isotopeLayout', function(event, next, current) {
-    // for when a 3d item
-    return $scope.layout();
-  });
   $transitions.onStart({}, function(transition){
     if ($scope.modalactive === true) {
       $scope.modalactive = false;

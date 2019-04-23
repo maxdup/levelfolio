@@ -1,31 +1,33 @@
-<!--main-->
-<map-summary map="maps['occult']"></map-summary>
+<isotope id="occult">
+  <!--main-->
+  <map-summary map="maps['occult']"></map-summary>
 
-<!--3d-->
-<map-viewer map="maps['occult']"></map-viewer>
+  <!--3d-->
+  <map-viewer map="maps['occult']"></map-viewer>
 
-<!--carousel-->
-<!--div class="box box-carousel occult">
-  <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.occult')"></span>
-  <div class="slides_control" id="slides_control">
-    <div uib-carousel active="active" template-url="static/partials/carousel.html">
-      <div uib-slide ng-repeat="slide in maps.occult.images" index="slide.id">
-        <div class="modalable" ng-click="viewcarouselmodal('.occult')"></div>
-        <img ng-src="{{slide.image}}">
+  <!--carousel-->
+  <!--div class="box box-carousel occult">
+      <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.occult')"></span>
+      <div class="slides_control" id="slides_control">
+        <div uib-carousel active="active" template-url="static/partials/carousel.html">
+          <div uib-slide ng-repeat="slide in maps.occult.images" index="slide.id">
+            <div class="modalable" ng-click="viewcarouselmodal('.occult')"></div>
+            <img ng-src="{{slide.image}}">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 </div-->
 
-<!--quote-->
-<a class="box box-quote" ng-click="viewimagemodal('static/images/pcgamer.jpg')">
-  <i>{{'pcgamer' | translate}}</i> <br />-PCGamer
-  <div class="date">(2015, April)</div>
-</a>
+  <!--quote-->
+  <a class="box box-quote" ng-click="viewimagemodal('static/images/pcgamer.jpg')">
+    <i>{{'pcgamer' | translate}}</i> <br />-PCGamer
+    <div class="date">(2015, April)</div>
+  </a>
 
-<!--360-->
-<a class="box box-icon" ng-click="go_panorama(maps['occult'])">
-  <img src="../../images/icons/icons-360.png"></img>
-</a>
+  <!--360-->
+  <a class="box box-icon" ng-click="go_panorama(maps['occult'])">
+    <img src="../../images/icons/icons-360.png"></img>
+  </a>
 
-<div class="box box-separator"/>
+  <div class="box box-separator"/>
+</isotope>

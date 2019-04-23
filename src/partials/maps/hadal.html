@@ -1,25 +1,27 @@
-<!--main-->
-<map-summary map="maps['hadal']"></map-summary>
+<isotope id="hadal">
+  <!--main-->
+  <map-summary map="maps['hadal']"></map-summary>
 
-<!--carousel-->
-<!--div class="box box-carousel hadal" important="2">
-  <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.hadal')"></span>
-  <div class="slides_control" id="slides_control">
-    <div uib-carousel active="active" template-url="static/partials/carousel.html">
-      <div uib-slide ng-repeat="slide in maps.hadal.images" index="slide.id">
-        <div class="modalable" ng-click="viewcarouselmodal('.hadal')"></div>
-        <img ng-src="{{slide.image}}">
+  <!--carousel-->
+  <!--div class="box box-carousel hadal" important="2">
+      <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.hadal')"></span>
+      <div class="slides_control" id="slides_control">
+        <div uib-carousel active="active" template-url="static/partials/carousel.html">
+          <div uib-slide ng-repeat="slide in maps.hadal.images" index="slide.id">
+            <div class="modalable" ng-click="viewcarouselmodal('.hadal')"></div>
+            <img ng-src="{{slide.image}}">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div-->
+  </div-->
 
-<!--3D-->
-<map-viewer map="maps['hadal']"></map-viewer>
+  <!--3D-->
+  <map-viewer map="maps['hadal']"></map-viewer>
 
-<!--360-->
-<a class="box box-icon" ng-click="go_panorama(maps['hadal'])" important="2">
-  <img src="../../images/icons/icons-360.png"></img>
-</a>
+  <!--360-->
+  <a class="box box-icon" ng-click="go_panorama(maps['hadal'])" important="2">
+    <img src="../../images/icons/icons-360.png"></img>
+  </a>
 
-<div class="box box-separator" important="3"/>
+  <div class="box box-separator" important="3"/>
+</isotope>

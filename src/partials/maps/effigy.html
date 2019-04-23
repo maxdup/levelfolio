@@ -1,21 +1,23 @@
-<!--main-->
-<map-summary map="maps['effigy']"></map-summary>
+<isotope id="effigy">
+  <!--main-->
+  <map-summary map="maps['effigy']"></map-summary>
 
-<!--360-->
-<a class="box box-icon" ng-click="go_panorama(maps['effigy'])">
-  <img src="../../images/icons/icons-360.png"></img>
-</a>
+  <!--360-->
+  <a class="box box-icon" ng-click="go_panorama(maps['effigy'])">
+    <img src="../../images/icons/icons-360.png"></img>
+  </a>
 
-<!--carousel-->
-<!--div class="box box-carousel effigy">
-  <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.effigy')"></span>
-  <div class="slides_control" id="slides_control">
-    <div uib-carousel active="active" template-url="static/partials/carousel.html">
-      <div uib-slide ng-repeat="slide in maps.effigy.images" index="slide.id">
-        <div class="modalable" ng-click="viewcarouselmodal('.effigy')"></div>
-        <img ng-src="{{slide.image}}">
+  <!--carousel-->
+  <!--div class="box box-carousel effigy">
+      <span class="glyphicon glyphicon-fullscreen fullscreen" ng-click="viewcarouselmodal('.effigy')"></span>
+      <div class="slides_control" id="slides_control">
+        <div uib-carousel active="active" template-url="static/partials/carousel.html">
+          <div uib-slide ng-repeat="slide in maps.effigy.images" index="slide.id">
+            <div class="modalable" ng-click="viewcarouselmodal('.effigy')"></div>
+            <img ng-src="{{slide.image}}">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div-->
-<div class="box box-separator"/>
+  </div-->
+  <div class="box box-separator"/>
+</isotope>

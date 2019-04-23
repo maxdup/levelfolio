@@ -1,3 +1,2 @@
-<div class="folio boxes" ng-repeat="map in mapsQueue"
-     ng-include="map.partial" onload="layoutLast($last)">
-</div>
+<div ng-repeat="map in mapsQueue track by $index"
+     ng-include="map.partial" class="isotope-container"></div>

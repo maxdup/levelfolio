@@ -11,6 +11,7 @@ import rootController from './js/root_controller.js'
 import localeModule from './js/locale.js'
 
 import navbar from './js/directives/navbar'
+import isotope from './js/directives/isotope'
 import map_viewer from './js/directives/map-viewer'
 import map_summary from './js/directives/map-summary'
 import map_panorama from './js/directives/map-panorama'
@@ -56,6 +57,7 @@ angular.module('folioApp', ['ui.router', localeModule, 'ngCookies',
     $locationProvider.html5Mode(true);
   })
   .directive("navbar", navbar)
+  .directive("isotope", isotope)
   .directive("mapViewer", map_viewer)
   .directive("mapPanorama", map_panorama)
   .directive("mapSummary", map_summary)
