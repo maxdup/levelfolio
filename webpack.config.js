@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+//const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -19,6 +19,10 @@ module.exports = {
   },
   module: {
     rules: [{
+      test: /\.js$/,
+      exclude: /node-modules/,
+      loader: 'babel-loader',
+    },{
       test: /\.less$/,
       use: [{loader: 'style-loader'},
              {loader: 'css-loader'},
@@ -37,7 +41,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new FaviconsWebpackPlugin('./src/images/icons/favicon.png'),
+    //new FaviconsWebpackPlugin('./src/images/icons/favicon.png'),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
       inject: true,
