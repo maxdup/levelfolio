@@ -1,7 +1,7 @@
 import { MTLLoader, OBJLoader, ShadowMapViewer, OrbitControls} from 'three-full'
 var THREE = require('three-full');
 
-function map_viewer($animate, $timeout){
+function map_viewer($animate, $timeout, $sce){
   'ngInject'
 
   return {
@@ -10,15 +10,11 @@ function map_viewer($animate, $timeout){
     replace: true,
     scope: { map: '=' },
     link: function(scope, element) {
-      scope.closemodels = function() {
-        var k, v, _ref;
-        scope.loaded = false;
-        _ref = scope.maps;
-        for (k in _ref) {
-          v = _ref[k];
-          v['mdlshow'] = false;
-        }
-      };
+
+      scope.icon_cog = $sce.trustAsHtml(require('octicons')['gear'].toSVG());
+      scope.icon_info = $sce.trustAsHtml(require('octicons')['info'].toSVG());
+      scope.icon_close = $sce.trustAsHtml(require('octicons')['x'].toSVG());
+
       function hidecontrols() {
         scope.controlsGlimpse3d = false;
       };
@@ -27,13 +23,17 @@ function map_viewer($animate, $timeout){
       };
       function init3d() {
         initialize3d();
-        scope.$emit('init3d', scope.map);
+        scope.$emit('isotopeReload', scope.map);
       };
       function clearCanvas() {
         element.find('canvas').remove();
       };
-      scope.openmodel = function() {
-        scope.closemodels();
+      scope.close_model = function() {
+        scope.loaded = false;
+        scope.map['mdlshow'] = false;
+      };
+      scope.open_model = function() {
+        scope.loaded = false;
         scope.map['mdlshow'] = true;
       };
       scope.$on('mdlloaded', function(event) {
@@ -178,8 +178,8 @@ function map_viewer($animate, $timeout){
         camera.lookAt(camera.target);
         controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
-        controls.rotateSpeed = 0.1;
-        controls.dampingFactor = 0.1;
+        controls.rotateSpeed = 0.5;
+        controls.dampingFactor = 1;
         controls.enableZoom = true;
         var canvas = angular.element(renderer.domElement);
         var wrapcontainer = angular.element(container);
@@ -205,7 +205,6 @@ function map_viewer($animate, $timeout){
         }
       };
       function createHUD() {
-        console.log('light', light);
         lightShadowMapViewer = new ShadowMapViewer(light);
         lightShadowMapViewer.position.x = 10;
         lightShadowMapViewer.position.y = SCREEN_HEIGHT - (SHADOW_MAP_HEIGHT / 4) - 10;

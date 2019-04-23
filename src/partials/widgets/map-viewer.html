@@ -1,23 +1,34 @@
 <div class="box box-wrap" important="{{map['mdlshow'] ? 1 : 2}}">
   <div id="{{map['targetid']}}"
        class="box-3d" ng-class="{'box-click': !map['mdlshow']}">
-    <div class="fill" ng-if="!map['mdlshow']" ng-click="openmodel()">
+
+    <!-- closed -->
+    <div class="fill" ng-if="!map['mdlshow']" ng-click="open_model()">
+      {{cshow}}
       <img align="center" src="../../images/icons/icons-3d.png" class="icon"></img>
     </div>
-    <span class="glyphicon glyphicon-remove close"
-          ng-show="map['mdlshow']" ng-click="closemodels()"></span>
+
+    <!-- close -->
+    <div class="icon close" ng-bind-html="icon_close"
+         ng-show="map['mdlshow'] && loaded" ng-click="close_model()"></div>
+
+    <!-- loading -->
     <div class="loading" ng-show="map['mdlshow'] && !loaded">
-      <span class="glyphicon glyphicon-cog"></span>
+      <div class="icon" ng-bind-html="icon_cog"></div>
       <span>{{'loading' | translate}}</span>
     </div>
-    <div class="controls" ng-show="map['mdlshow']" ng-mouseleave="cshow=false">
-      <div class="controls" ng-show="!cshow && !controlsGlimpse3d">
-        <div class="controls3d" >
-          <span class="glyphicon glyphicon-info-sign" ng-mouseenter="cshow=true"/>
-        </div>
+
+    <!-- controls -->
+    <div class="controls3d"
+         ng-if="map['mdlshow'] && loaded"
+         ng-class="{'hidden': $parent.cshow || controlsGlimpse3d}">
+      <div class="icon" ng-bind-html="icon_info"
+           ng-mouseenter="$parent.cshow=true">
       </div>
-      <div class="controls" ng-show="cshow || controlsGlimpse3d" ng-mouseleave="cshow=false">
-        <div class="controls3d" ng-mouseenter="cshow=true" ng-mouseleave="cshow=false">
+    </div>
+    <div class="controls" ng-mouseleave="cshow=false" ng-if="loaded"
+         ng-show="map['mdlshow'] && (cshow || controlsGlimpse3d)">
+        <div class="controls3d" ng-mouseleave="cshow=false">
           <img src="../../images/icons/icons-lcrot.png"/>
           <img src="../../images/icons/icons-mczoom.png"/>
           <img src="../../images/icons/icons-rcpan.png"/>

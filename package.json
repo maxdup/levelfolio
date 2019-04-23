@@ -49,6 +49,6 @@
     "masonry-layout": "^4.2.2",
     "npm": "^6.9.0",
     "octicons": "^8.5.0",
-    "three-full": "^17.1.0",
+    "three-full": "^17.1.0"
   }
 }
