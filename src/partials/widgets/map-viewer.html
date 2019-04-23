@@ -1,16 +1,16 @@
-<div class="box box-wrap" important="{{maps[map]['mdlshow'] ? 1 : 2}}">
-  <div id="{{maps[map]['targetid']}}"
-       class="box-3d" ng-class="{'box-click': !maps[map]['mdlshow']}">
-    <div class="fill" ng-if="!maps[map]['mdlshow']" ng-click="openmodel()">
+<div class="box box-wrap" important="{{map['mdlshow'] ? 1 : 2}}">
+  <div id="{{map['targetid']}}"
+       class="box-3d" ng-class="{'box-click': !map['mdlshow']}">
+    <div class="fill" ng-if="!map['mdlshow']" ng-click="openmodel()">
       <img align="center" src="../../images/icons/icons-3d.png" class="icon"></img>
     </div>
     <span class="glyphicon glyphicon-remove close"
-          ng-show="maps[map]['mdlshow']" ng-click="closemodels()"></span>
-    <div class="loading" ng-show="maps[map]['mdlshow'] && !loaded">
+          ng-show="map['mdlshow']" ng-click="closemodels()"></span>
+    <div class="loading" ng-show="map['mdlshow'] && !loaded">
       <span class="glyphicon glyphicon-cog"></span>
       <span>{{'loading' | translate}}</span>
     </div>
-    <div class="controls" ng-show="maps[map]['mdlshow']" ng-mouseleave="cshow=false">
+    <div class="controls" ng-show="map['mdlshow']" ng-mouseleave="cshow=false">
       <div class="controls" ng-show="!cshow && !controlsGlimpse3d">
         <div class="controls3d" >
           <span class="glyphicon glyphicon-info-sign" ng-mouseenter="cshow=true"/>

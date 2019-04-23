@@ -45,10 +45,10 @@
     "favicons-webpack-plugin": "0.0.9",
     "isotope-layout": "^3.0.6",
     "isotope-masonry-horizontal": "^2.0.1",
-    "masonry-layout": "^4.2.2",
     "jquery": "^3.4.0",
+    "masonry-layout": "^4.2.2",
     "npm": "^6.9.0",
     "octicons": "^8.5.0",
-    "three": "^0.103.0"
+    "three-full": "^17.1.0",
   }
 }
