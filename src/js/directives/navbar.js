@@ -42,7 +42,6 @@ function navbar ($sce, $cookies, $translate, $location,
         angular.element($window).off('click', onclick);
       }
       function onclick(event){
-        console.log('onclick', isNavMenu(event.target));
         if (scope.isNavOpen && !isNavMenu(event.target)){
           close();
           scope.$apply();

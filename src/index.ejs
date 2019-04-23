@@ -8,13 +8,12 @@
 
 <body >
   <!-- Map panoramas -->
-  <map-panorama ng-model="current_panorama"
-                focus="$root.focus360">
+  <map-panorama ng-model="current_panorama" focus="focus360">
   </map-panorama>
 
   <!-- Page content -->
-  <div class="container" ng-hide="$root.focus360">
-    <div class="page-margin" ng-click="go_panorama()"></div>
+  <div class="container" ng-hide="focus360">
+    <div class="page-margin" ng-click="focus360 = true"></div>
     <div class="page-centering">
       <div class="page-background"></div>
       <div class="page">

@@ -30,8 +30,8 @@ function rootController(
   // Load Panorama
   $scope.current_panorama = $scope.maps['vanguard'];
   $scope.go_panorama = function(map) {
-    $rootScope.focus360 = true;
-    if (map){ $scope.current_map = map; }
+    if (map == $scope.current_panorama){ $scope.focus360 = true; }
+    if (map){ $scope.current_panorama = map;}
   }
 
   // Routing routines
