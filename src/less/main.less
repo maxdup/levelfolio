@@ -635,9 +635,16 @@ a.box.box-photo {
     transition-property: height width;
     transition-duration: 0.3s;
     transition-timing-function: ease;
+    .controls, .controls3d {
+        display: none;
+    }
+
     &.big {
         .box-w2;
         .box-hx;
+        .controls, .controls3d {
+            display: inline-block;
+        }
     }
     .fill {
         height: 100%;

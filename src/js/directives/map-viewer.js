@@ -21,9 +21,8 @@ function map_viewer($animate, $timeout, $sce){
       function layout() {
         scope.$emit('isotopeLayout');
       };
-      function init3d() {
-        initialize3d();
-        scope.$emit('isotopeReload', scope.map);
+      function reorder() {
+        scope.$emit('isotopeReload');
       };
       function clearCanvas() {
         element.find('canvas').remove();
@@ -43,15 +42,18 @@ function map_viewer($animate, $timeout, $sce){
         $timeout(hidecontrols, 2000);
       });
       scope.$watch("map.mdlshow", function(show, oldShow) {
+        $timeout(function(){
         if(show == oldShow){ return }
         if (!show) {
-          $animate.removeClass(element, 'big').then(layout);
+          $animate.removeClass(element, 'big').then(reorder);
           $animate.removeClass(element.find('.box-3d'), 'big').then(clearCanvas);
         }
         if (show) {
-          $animate.addClass(element, 'big').then(layout);
-          return $animate.addClass(element.find('.box-3d'), 'big').then(init3d);
+          $animate.addClass(element, 'big').then(reorder);
+          return $animate.addClass(element.find('.box-3d'), 'big')
+            .then($timeout(function(){init3d()}, 500));
         }
+        });
       });
 
       var camera, controls, scene, scene2, renderer, light = null;
@@ -63,7 +65,7 @@ function map_viewer($animate, $timeout, $sce){
       var showHUD = false;
       var lightShadowMapViewer = null;
 
-      function initialize3d() {
+      function init3d() {
 
         var map = scope.map;
         var container = document.getElementById(map['targetid']);
