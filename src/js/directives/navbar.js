@@ -1,4 +1,5 @@
-function navbar ($sce, $cookies, $translate, $location, $window, $timeout){
+function navbar ($sce, $cookies, $translate, $location,
+                 $window, $timeout, $rootScope){
   "ngInject"
 
   return {
@@ -28,11 +29,41 @@ function navbar ($sce, $cookies, $translate, $location, $window, $timeout){
       } else {
         scope.active_lang = $translate.use();
       }
-
-      scope.$on('$locationChangeStart', function(event, next, current) {
+      scope.toggle_open = function(){
+        if(scope.isNavOpen){ close() }
+        else { open() }
+      }
+      function open(){
+        scope.isNavOpen = true;
+        angular.element($window).on('click', onclick);
+      }
+      function close(){
         scope.isNavOpen = false;
-        checkOverflow();
-      });
+        angular.element($window).off('click', onclick);
+      }
+      function onclick(event){
+        console.log('onclick', isNavMenu(event.target));
+        if (scope.isNavOpen && !isNavMenu(event.target)){
+          close();
+          scope.$apply();
+        }
+      }
+      function reset(){
+        $timeout(function(){ close(); checkOverflow(); });
+      }
+
+      var nav_menu = element.find('.navbar-menu')[0];
+      var nav_menu_toggle = element.find('.navbar-menu-toggle')[0];
+      function isNavMenu(elem){
+        // Determine if click is in nav menu
+        if (elem.parentElement == null){ return false; }
+        if (nav_menu_toggle == elem){ return true; }
+        if (nav_menu == elem){ return true; }
+        return isNavMenu(elem.parentElement);
+      }
+
+      scope.$on('$locationChangeStart', reset);
+      $rootScope.$watch('focus360', reset)
 
       scope.isActive = function(viewLocation) {
         return $location.path().indexOf(viewLocation) === 0;

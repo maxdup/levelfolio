@@ -22,8 +22,7 @@
        href="/contact">{{'nav-contact' | translate}}</a>
 
     <a class="navbar-menu-toggle" ng-bind-html="icon_menu"
-       ng-click="isNavOpen = !isNavOpen"
-       ng-class="{'active': isNavOpen}">
+       ng-class="{'active': isNavOpen}" ng-click="toggle_open()">
     </a>
   </div>
 
