@@ -1,0 +1,186 @@
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 100px;
+    padding-top: 60px;
+    font-size: 0px;
+    white-space: nowrap;
+    color: white;
+    background: none;
+    border: none;
+    * {
+        font-size: 30px;
+    }
+
+    .navbar-header {
+        display: inline-block;
+        .supertitle {
+            color: white;
+            font-size: 17px;
+            margin: -12px -30px;
+        }
+        .title {
+            font-weight: bold;
+        }
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        &.active, &:hover {
+            text-decoration: underline;
+        }
+    }
+    .nav-desktop {
+        font-size: 0;
+        padding-right: 120px;
+        display: inline-block;
+        position: relative;
+        a {
+            &:before {
+                content: "|";
+                display: inline-block;
+                margin: 0 8px;
+            }
+        }
+        a.navbar-menu-toggle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            &:before {
+                content: none;
+            }
+        }
+    }
+    .lang-desktop, .lang-menu {
+        a {
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            &:after {
+                content: "|";
+                display: inline-block;
+                margin: 0 8px;
+            }
+            &:last-child:after {
+                content: none;
+            }
+        }
+
+    }
+    .lang-desktop {
+	    float: right;
+        padding: 14px 40px 0 0;
+        font-size: 0;
+    }
+    .lang-menu {
+        float: right;
+        margin-top: 30px;
+        font-size: 15px;
+        a {
+            padding: 0 !important;
+            display: inline-block !important;
+        }
+
+    }
+
+    .navbar-menu-toggle {
+        vertical-align: bottom;
+        margin-left: 10px;
+        margin-bottom: 3px;
+        border: solid 1px grey;
+        .border-radius(3px);
+
+        padding: 4px;
+        width: 40px;
+        height: 30px;
+        text-align: center;
+        line-height: 1;
+
+        svg {
+            height: 32px;
+            width: auto;
+            color: white;
+            fill: white;
+        }
+        &:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+        &:active {
+            background: #303030;
+        }
+    }
+
+    .navbar-menu {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        height: 350px;
+        margin-top: 10px;
+        padding: 0 30px 0 23px;
+
+        background: #303030;
+        border: solid 1px grey;
+
+        overflow: hidden;
+
+        transition-property: height;
+        transition-duration: 0.3s;
+        &:before, &:after {
+            content: '';
+            display: block;
+            height: 45px;
+        }
+        &:after {
+            height: 15;
+        }
+        a {
+            display: block;
+            padding: 2px 0;
+        }
+        &.ng-hide {
+            height: 0px;
+        }
+    }
+
+    .navbar-menu-toggle, .navbar-menu {
+        display: none;
+    }
+    &.mobile {
+        .nav-desktop {
+            a {
+                pointer-events: none;
+                opacity: 0;
+                z-index: -1;
+            }
+            a.navbar-menu-toggle {
+                pointer-events: all;
+                display: block;
+                opacity: 1;
+                z-index: 1;
+            }
+        }
+        .lang-desktop {
+            display: none;
+        }
+        .navbar-menu-toggle {
+            display: inline-block;
+        }
+        .navbar-menu {
+            display: block;
+        }
+    }
+
+}
+
+.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius:    @radius;
+    border-radius:         @radius;
+
+    -moz-background-clip:    padding;
+    -webkit-background-clip: padding-box;
+    background-clip:         padding-box;
+}

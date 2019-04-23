@@ -9,6 +9,8 @@ import rootModule from './js/root_controller.js'
 import localeModule from './js/locale.js'
 
 import './less/main.less';
+import './less/navbar.less';
+
 angular.module('folioApp', [
   'ngRoute', 'ngCookies', 'ngAnimate', 'ui.bootstrap',
   rootModule, controllerModule, localeModule])

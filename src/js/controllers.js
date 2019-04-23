@@ -1,14 +1,13 @@
 import 'angular-modal-service/dst/angular-modal-service'
 
 var Isotope = require('isotope-layout');
-require('imagefill');
 import 'masonry-layout/masonry'
 import 'isotope-masonry-horizontal/masonry-horizontal'
 
 const controllersModule = 'folio.Controllers';
 export default controllersModule;
 
-angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
+angular.module(controllersModule, ['angularModalService'])
   .controller('FolioController', function(
     $scope, $location, $http, $route, $routeParams, $rootScope,
     $window, $timeout, $document, ModalService, $templateCache) {
@@ -17,10 +16,32 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
         animate, camera, controls, createHUD, light, lightShadowMapViewer,
         material, render, renderer, scene, scene2, showHUD;
 
-    $scope.queue();
+    function queue() {
+      // Order maps
+      var front, k, v, _ref;
+      front = {};
+      $scope.mapsQueue = [];
+      _ref = $scope.maps;
+      for (k in _ref) {
+        v = _ref[k];
+        if (v['level'] === 0) {
+          if (k === $routeParams.map) {
+            front = v;
+          } else {
+            $scope.mapsQueue.push(v);
+          }
+        }
+      }
+      $scope.mapsQueue.sort(function(a, b) {
+        return a['order'] - b['order'];
+      });
+      if (front) {
+        return $scope.mapsQueue.unshift(front);
+      }
+    }
+    queue();
 
     var iso;
-
     $scope.layout = function() {
       iso = new Isotope('.boxes',{
         layoutMode: 'masonryHorizontal',
@@ -33,7 +54,6 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
           rowHeight: 200
         }
       });
-
       iso.updateSortData();
       iso.layout();
     };
@@ -91,7 +111,7 @@ angular.module(controllersModule, ['ui.bootstrap', 'angularModalService'])
       if ($scope.modalactive === true) {
         $scope.modalactive = false;
         $scope.modal.scope.close();
-        return event.preventDefault();
+        event.preventDefault();
       }
     });
     camera = null;
