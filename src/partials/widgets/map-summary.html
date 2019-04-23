@@ -22,22 +22,18 @@
           <li ng-if="map['level'] == 0">
             <a href="steam://url/CommunityFilePage/{{map['workid']}}" target="_blank">
               {{'install-3' | translate}}</a>
-            <span class="glyphicon glyphicon glyphicon-exclamation-sign"
-                  uib-popover-template="'poptemplate3.html'" popover-title="Notes"
-                  popover-trigger="'outsideClick'">
-            </span>
 
+            <a class="icon" ng-bind-html="icon_exclaim" popover-trigger="'outsideClick'"
+                 uib-popover-template="'poptemplate3.html'" popover-title="Notes"></a>
           </li>
           <li>
             <a href="steam://run/440//+map%20{{map['level']==0 ? 'workshop%2f':''}}{{map['workid']}}" target="_blank">
               {{'install-4' | translate}}</a>
-            <span class="glyphicon glyphicon glyphicon-exclamation-sign"
-                  uib-popover-template="'poptemplate4.html'" popover-title="Notes"
-                  popover-trigger="'outsideClick'">
-            </span>
+            <a class="icon" ng-bind-html="icon_exclaim" popover-trigger="'outsideClick'"
+                 uib-popover-template="'poptemplate4.html'" popover-title="Notes"></a>
           </li>
         </ol>
-        <span class="glyphicon glyphicon-chevron-down" ng-click="install = !install"></span>
+        <a class="icon" ng-bind-html="icon_chevron" ng-click="install = !install"></a>
       </div>
     </div>
     <script type="text/ng-template" id="poptemplate4.html">
@@ -50,7 +46,9 @@
     <script type="text/ng-template" id="poptemplate3.html">
       <div>
         {{'install-3' | translate}}
-        {{'install-3-alt' | translate}} <a href="http://steamcommunity.com/sharedfiles/filedetails/?id={{map['workid']}}" target="_blank">{{'install-3-alt2' | translate}}</a>
+        {{'install-3-alt' | translate}}
+        <a href="http://steamcommunity.com/sharedfiles/filedetails/?id={{map['workid']}}"
+           target="_blank">{{'install-3-alt2' | translate}}</a>
       </div>
     </script>
   </div>

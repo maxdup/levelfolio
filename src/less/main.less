@@ -332,7 +332,6 @@ a.box.box-photo {
 .box-main {
     .box-blurb;
     height: 100%;
-
     .install-box {
         position: absolute;
         bottom: 0;
@@ -345,6 +344,7 @@ a.box.box-photo {
     }
     .install {
         position: absolute;
+        z-index: 2;
         bottom: 0;
         color: white;
         width: 100%;
@@ -355,31 +355,51 @@ a.box.box-photo {
         &.ng-hide-remove, &.ng-hide-add {
             transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
         }
-        & > a {
+        &>a {
             float: right;
             padding-bottom: 10px;
             padding-right: 25px;
             cursor: pointer;
             color: white;
-            font-size: 2.28rem;
+            font-size: 22px;
             line-height: 110%;
             margin: 1.14rem 0 0.912rem 0;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        a.icon {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+            &:hover {
+                svg {
+                    fill: #bbbbbb;
+                }
+            }
+        }
+        h3 {
+            font-size: 30px;
         }
         &>div {
-            //extend blurb?
-            padding-top: 20px;
-            padding-bottom: 30px;
+            padding: 20px 20px 40px;
             color: white;
             background: #222222;
-            .glyphicon-chevron-down {
-                cursor: pointer;
+            &>a.icon {
                 position: absolute;
-                top: initial;
+                right: 30px;
                 bottom: 20px;
-                right: 25px;
-            }
-            .glyphicon-exclamation-sign {
-                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                svg {
+                    width: 30px;
+                    height: 45px;
+                    padding-bottom: 10px;
+                }
             }
         }
         ol {
