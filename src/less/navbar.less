@@ -4,6 +4,7 @@ nav {
     left: 0;
     right: 0;
     padding-left: 100px;
+    padding-right: 120px;
     padding-top: 60px;
     font-size: 0px;
     white-space: nowrap;
@@ -58,6 +59,7 @@ nav {
             font-weight: 800;
             font-size: 16px;
             cursor: pointer;
+
             &:after {
                 content: "|";
                 display: inline-block;
@@ -70,9 +72,14 @@ nav {
 
     }
     .lang-desktop {
-	    float: right;
+        position: absolute;
+        z-index: 10;
+        top: 60px;
+        right: 0;
+
         padding: 14px 40px 0 0;
         font-size: 0;
+
     }
     .lang-menu {
         float: right;

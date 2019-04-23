@@ -1,4 +1,4 @@
-function navbar ($sce, $cookies, $translate, $location, $window){
+function navbar ($sce, $cookies, $translate, $location, $window, $timeout){
   return {
     restrict: 'E',
     replace: true,
@@ -17,7 +17,7 @@ function navbar ($sce, $cookies, $translate, $location, $window){
       scope.translate = function(lang) {
         scope.active_lang = lang;
         $translate.use(lang);
-        checkOverflow();
+        $timeout(checkOverflow);
         $cookies.put('lang', lang);
       }
 
