@@ -2,7 +2,7 @@ var THREE = require('three');
 import maps from './maps_meta.js';
 
 function rootController(
-  $rootScope, $scope,  $route, $routeParams, $timeout,  $templateCache) {
+  $rootScope, $scope, $state, $transitions, $timeout, $templateCache) {
   "ngInject"
 
   var  hidecontrols, isUserInteracting, lat, lon, material,
@@ -30,21 +30,21 @@ function rootController(
     if (map){ $scope.current_map = map; }
   }
 
-
-  // Determine route change direction
-  /*routes = ["/home", "/commercial", "/hobby/:map?", "/code", "/contact"];
-    $rootScope.$on('$routeChangeStart', function(event, next, current) {
-    var k, v, _ref;
-    if (!current || !current['$$route']) {
-    return;
+  var states = $state.get();
+  $transitions.onStart({}, function(transition){
+    // Determine route change direction
+    var from = transition.from().name;
+    var to = transition.to().name;
+    for (var i = 0; i < states.length; i++){
+      if (to == states[i].name){ $scope.reverse = true; break;}
+      if (from == states[i].name){ $scope.reverse = false; break;}
     }
-    _ref = $scope.maps;
-    for (k in _ref) {
-    v = _ref[k];
-    v['mdlshow'] = false;
+    // Reset mdlshow
+    var k
+    for (k in $scope.maps) {
+      $scope.maps[k].mdlshow = false;
     }
-    $scope.reverse = routes.indexOf(current['$$route']['originalPath']) >
-    routes.indexOf(next['$$route']['originalPath']);
-    });*/
+    return true;
+  })
 }
 export default rootController;

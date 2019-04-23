@@ -1,6 +1,6 @@
 var THREE = require('three');
 
-function map_panorama($window, $timeout, $sce){
+function map_panorama($window, $timeout, $sce, $transitions){
   "ngInject"
 
   return {
@@ -59,8 +59,8 @@ function map_panorama($window, $timeout, $sce){
             material.map = newmap;
             scope.show = true;
           }, 300);
+          scope.v360();
         }
-        scope.v360();
       })
 
       scope.heldControl = false;
@@ -71,12 +71,12 @@ function map_panorama($window, $timeout, $sce){
           scope.heldControl = false;
         }
       };
-
-      scope.$on('$locationChangeStart', function(event, next, current) {
+      $transitions.onStart({}, function(transition){
         if (scope.focus) {
           scope.v360();
-          event.preventDefault();
+          return false;
         }
+        return true;
       });
       function onDocumentMouseDown(event) {
         if (scope.focus) {

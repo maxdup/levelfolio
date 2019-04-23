@@ -1,12 +1,12 @@
 <!doctype html>
- <html lang="en" ng-app="folioApp" ng-strict-di>
+<html lang="en" ng-app="folioApp" ng-strict-di ng-controller="RootController">
 <head>
   <meta charset="utf-8">
   <title>Maxime Dupuis</title>
   <base href="/"/>
 </head>
 
-<body ng-controller="RootController">
+<body >
   <!-- Map panoramas -->
   <map-panorama ng-model="current_panorama"
                 focus="$root.focus360">
@@ -22,8 +22,8 @@
         <navbar></navbar>
         <div class="content">
           <div class="scrollbox">
-            <div ng-view ng-class="{ reverse: reverse}"
-                 class="scrollbox-padded view"></div>
+            <ui-view ng-class="{ reverse: reverse}"
+                 class="scrollbox-padded view"></ui-view>
           </div>
         </div>
       </div>

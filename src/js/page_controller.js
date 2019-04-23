@@ -2,8 +2,8 @@ var Isotope = require('isotope-layout');
 require('isotope-masonry-horizontal')
 
 function pageController(
-  $scope, $location, $http, $route, $routeParams, $rootScope,
-  $window, $timeout, $document, ModalService, $templateCache) {
+  $rootScope, $scope, $window, $timeout, $document,
+  ModalService, $state, $stateParams, $transitions) {
   "ngInject"
 
   var SCREEN_HEIGHT, SCREEN_WIDTH, SHADOW_MAP_HEIGHT, SHADOW_MAP_WIDTH,
@@ -19,7 +19,7 @@ function pageController(
     for (k in _ref) {
       v = _ref[k];
       if (v['level'] === 0) {
-        if (k === $routeParams.map) {
+        if (k === $stateParams.map) {
           front = v;
         } else {
           $scope.mapsQueue.push(v);
@@ -34,7 +34,9 @@ function pageController(
     }
   }
   queue();
-
+  $scope.layoutLast = function(isLast){
+    if (isLast) { $scope.layout(); }
+  }
   $scope.layout = function() {
     $scope.iso = new Isotope('.boxes',{
       layoutMode: 'masonryHorizontal',
@@ -47,12 +49,16 @@ function pageController(
         rowHeight: 200
       }
     });
-    $scope.iso.updateSortData();
-    $timeout(function(){$scope.iso.layout()});
+    if ($scope.iso.element){
+      $scope.iso.updateSortData();
+      $scope.iso.layout();
+    }
   };
-  $scope.$on('$viewContentLoaded', function() {
-    $scope.layout();
-  });
+  if ($state.current.auto){
+    $scope.$on('$viewContentLoaded', function() {
+      $scope.layout();
+    });
+  }
   $scope.reload = function() {
     $scope.iso.reloadItems();
     $scope.layout();
@@ -66,16 +72,12 @@ function pageController(
     // for when a 3d item
     return $scope.layout();
   });
-  $scope.$on('$locationChangeSuccess', function(event, next, current) {
-    $scope.layout();
-  })
-  $scope.$on('$locationChangeStart', function(event, next, current) {
+  $transitions.onStart({}, function(transition){
     if ($scope.modalactive === true) {
       $scope.modalactive = false;
       $scope.modal.scope.close();
-      event.preventDefault();
     }
-  });
+  })
   /*$scope.viewimagemodal = function(image) {
     if (image == null) {
     image = '';
