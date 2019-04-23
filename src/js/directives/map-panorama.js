@@ -1,6 +1,8 @@
 var THREE = require('three');
 
 function map_panorama($window, $timeout, $sce){
+  "ngInject"
+
   return {
     restrict: 'E',
     template: require('../../partials/widgets/map-panorama.html'),

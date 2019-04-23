@@ -10,6 +10,7 @@ function map_viewer(){
       maps: '='
     },
     link: function(scope, element) {
+
       var clearCanvas, hidecontrols, init3d, layout;
       scope.$emit('isotopeReload');
       scope.closemodels = function() {

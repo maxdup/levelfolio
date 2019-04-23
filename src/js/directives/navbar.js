@@ -1,4 +1,6 @@
 function navbar ($sce, $cookies, $translate, $location, $window, $timeout){
+  "ngInject"
+
   return {
     restrict: 'E',
     replace: true,

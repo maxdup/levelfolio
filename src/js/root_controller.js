@@ -12,8 +12,8 @@ import maps from './maps_meta.js';
 
 angular.module(rootModule, ['ngCookies'])
   .controller('RootController', function(
-    $rootScope, $scope,  $route, $routeParams,
-    $timeout,  $templateCache) {
+    $rootScope, $scope,  $route, $routeParams, $timeout,  $templateCache) {
+    "ngInject"
 
     var  hidecontrols, isUserInteracting, lat, lon, material,
         mesh, onDocumentMouseDown, onDocumentMouseMove, onDocumentMouseUp,

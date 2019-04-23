@@ -11,6 +11,7 @@ angular.module(controllersModule, ['angularModalService'])
   .controller('FolioController', function(
     $scope, $location, $http, $route, $routeParams, $rootScope,
     $window, $timeout, $document, ModalService, $templateCache) {
+    "ngInject"
 
     var SCREEN_HEIGHT, SCREEN_WIDTH, SHADOW_MAP_HEIGHT, SHADOW_MAP_WIDTH,
         animate, camera, controls, createHUD, light, lightShadowMapViewer,
