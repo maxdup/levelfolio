@@ -40,16 +40,16 @@ function map_viewer($animate, $timeout, $sce){
       });
       scope.$watch("map.mdlshow", function(show, oldShow) {
         $timeout(function(){
-        if(show == oldShow){ return }
-        if (!show) {
-          $animate.removeClass(element, 'big').then(reorder);
-          $animate.removeClass(element.find('.box-3d'), 'big').then(clearCanvas);
-        }
-        if (show) {
-          $animate.addClass(element, 'big').then(reorder);
-          return $animate.addClass(element.find('.box-3d'), 'big')
-            .then(loadThree);
-        }
+          if(show == oldShow){ return }
+          if (!show) {
+            $animate.removeClass(element, 'big').then(reorder);
+            $animate.removeClass(element.find('.box-3d'), 'big').then(clearCanvas);
+          }
+          if (show) {
+            $animate.addClass(element, 'big').then(reorder);
+            return $animate.addClass(element.find('.box-3d'), 'big')
+              .then(loadThree);
+          }
         });
       });
 
@@ -63,7 +63,7 @@ function map_viewer($animate, $timeout, $sce){
       var lightShadowMapViewer = null;
       var THREE;
 
-      loadThree = function() {
+      function loadThree() {
         require.ensure(['three-full'], function(require){
           THREE = require('three-full');
           $timeout(init3d, 500);
