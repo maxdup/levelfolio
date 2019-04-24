@@ -1,6 +1,3 @@
-import { MTLLoader, OBJLoader, ShadowMapViewer, OrbitControls} from 'three-full'
-var THREE = require('three-full');
-
 function map_viewer($animate, $timeout, $sce){
   'ngInject'
 
@@ -11,9 +8,9 @@ function map_viewer($animate, $timeout, $sce){
     scope: { map: '=' },
     link: function(scope, element) {
 
-      scope.icon_cog = $sce.trustAsHtml(require('octicons')['gear'].toSVG());
-      scope.icon_info = $sce.trustAsHtml(require('octicons')['info'].toSVG());
-      scope.icon_close = $sce.trustAsHtml(require('octicons')['x'].toSVG());
+      scope.icon_cog = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/gear.svg'));
+      scope.icon_info = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/info.svg'));
+      scope.icon_close = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/x.svg'));
 
       function hidecontrols() {
         scope.controlsGlimpse3d = false;
@@ -51,7 +48,7 @@ function map_viewer($animate, $timeout, $sce){
         if (show) {
           $animate.addClass(element, 'big').then(reorder);
           return $animate.addClass(element.find('.box-3d'), 'big')
-            .then($timeout(function(){init3d()}, 500));
+            .then(loadThree);
         }
         });
       });
@@ -64,6 +61,14 @@ function map_viewer($animate, $timeout, $sce){
 
       var showHUD = false;
       var lightShadowMapViewer = null;
+      var THREE;
+
+      loadThree = function() {
+        require.ensure(['three-full'], function(require){
+          THREE = require('three-full');
+          $timeout(init3d, 500);
+        }, function(error){}, 'THREE-FULL');
+      }
 
       function init3d() {
 
@@ -91,10 +96,10 @@ function map_viewer($animate, $timeout, $sce){
         light.shadow.mapSize.height = SHADOW_MAP_HEIGHT;
         scene.add(light);
         var manager = new THREE.LoadingManager();
-        var mtlloader = new MTLLoader();
+        var mtlloader = new THREE.MTLLoader();
         mtlloader.load(map['mtlurl'], function(materials) {
           materials.preload();
-          var loader = new OBJLoader(manager);
+          var loader = new THREE.OBJLoader(manager);
           loader.setMaterials(materials);
           loader.load(map['mdlurl'], function(object) {
             object.traverse(function(child) {
@@ -178,7 +183,7 @@ function map_viewer($animate, $timeout, $sce){
         camera.position.y = 300;
         camera.position.z = 300;
         camera.lookAt(camera.target);
-        controls = new OrbitControls(camera, renderer.domElement);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.rotateSpeed = 0.5;
         controls.dampingFactor = 1;

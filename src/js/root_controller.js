@@ -1,5 +1,3 @@
-var THREE = require('three');
-
 function rootController(
   $rootScope, $scope, $state, $transitions, $timeout, $templateCache) {
   "ngInject"

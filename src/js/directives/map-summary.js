@@ -7,9 +7,8 @@ function map_summary ($sce){
     template: require('../../partials/widgets/map-summary.html'),
     scope: { map: '=', },
     link: function(scope, element){
-      scope.icon_exclaim = $sce.trustAsHtml(require('octicons')['issue-opened'].toSVG());
-      console.log
-      scope.icon_chevron = $sce.trustAsHtml(require('octicons')['chevron-down'].toSVG());
+      scope.icon_chevron = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/chevron-down.svg'));
+      scope.icon_exclaim = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/issue-opened.svg'));
     }
   }
 }

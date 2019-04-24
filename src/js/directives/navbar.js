@@ -7,8 +7,7 @@ function navbar ($sce, $cookies, $translate, $location,
     replace: true,
     template: require('../../partials/widgets/navbar.html'),
     link: function(scope, element){
-
-      scope.icon_menu = $sce.trustAsHtml(require('octicons')['grabber'].toSVG());
+      scope.icon_menu = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/grabber.svg'));
 
       function checkOverflow(){
         scope.overflow = element[0].clientWidth < element[0].scrollWidth;

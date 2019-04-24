@@ -2,8 +2,6 @@ import 'angularjs'
 import '@uirouter/angularjs'
 import 'angular-cookies/angular-cookies'
 import 'angular-animate/angular-animate'
-import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls'
-
 import 'angular-modal-service/dst/angular-modal-service'
 
 import pageController from './js/page_controller.js'
@@ -11,6 +9,7 @@ import rootController from './js/root_controller.js'
 import localeModule from './js/locale.js'
 
 import navbar from './js/directives/navbar'
+import popover from './js/directives/popover'
 import isotope from './js/directives/isotope'
 import map_viewer from './js/directives/map-viewer'
 import map_summary from './js/directives/map-summary'
@@ -19,8 +18,8 @@ import map_panorama from './js/directives/map-panorama'
 import './less/main.less';
 import './less/navbar.less';
 
-angular.module('folioApp', ['ui.router', localeModule, 'ngCookies',
-                            'ngCookies', 'ngAnimate', 'angularModalService'])
+angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
+                            localeModule, 'angularModalService'])
   .config(function($urlRouterProvider, $locationProvider, $stateProvider, $compileProvider){
     "ngInject"
     $stateProvider
@@ -61,6 +60,7 @@ angular.module('folioApp', ['ui.router', localeModule, 'ngCookies',
     $locationProvider.html5Mode(true);
   })
   .directive("navbar", navbar)
+  .directive("popover", popover)
   .directive("isotope", isotope)
   .directive("mapViewer", map_viewer)
   .directive("mapPanorama", map_panorama)

@@ -1,5 +1,3 @@
-var THREE = require('three');
-
 function map_panorama($window, $timeout, $sce, $transitions){
   "ngInject"
 
@@ -11,8 +9,8 @@ function map_panorama($window, $timeout, $sce, $transitions){
       focus: '='
     },
     link: function(scope, element) {
-      scope.icon_info = $sce.trustAsHtml(require('octicons')['info'].toSVG());
-      scope.icon_chevron = $sce.trustAsHtml(require('octicons')['chevron-right'].toSVG());
+      scope.icon_chevron = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/chevron-right.svg'));
+      scope.icon_info = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/info.svg'));
 
       var camera, hidecontrols, isUserInteracting, lat, lon, material,
           mesh,
@@ -105,7 +103,18 @@ function map_panorama($window, $timeout, $sce, $transitions){
         }
       };
 
+      var THREE;
+      scope.load = function() {
+        require.ensure(['three-full'],
+                       function(require){
+                         THREE = require('three-full');
+                         scope.init();
+                         scope.animate();
+                       },
+                       function(error){}, 'THREE-FULL');
+      }
       scope.init = function() {
+
         var geometry, tdcontainer;
         camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.target = new THREE.Vector3(0, 0, 0);
@@ -133,21 +142,23 @@ function map_panorama($window, $timeout, $sce, $transitions){
         requestAnimationFrame(scope.animate);
         scope.update();
       };
+      function toRad(degrees){
+        return degrees * (Math.PI/180);
+      }
       scope.update = function() {
         if (!scope.heldControl) {
           lon += 0.03;
         }
         lat = Math.max(-85, Math.min(85, lat));
-        phi = THREE.Math.degToRad(90 - lat);
-        theta = THREE.Math.degToRad(lon);
+        phi = toRad(90 - lat);
+        theta = toRad(lon);
         camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
         camera.target.y = 500 * Math.cos(phi);
         camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
         camera.lookAt(camera.target);
         renderer.render(scene, camera);
       };
-      scope.init();
-      scope.animate();
+      scope.load();
       w = angular.element($window);
       w.bind('resize', function() {
         camera.aspect = window.innerWidth / window.innerHeight;

@@ -28,7 +28,7 @@ module.exports = {
              {loader: 'css-loader'},
              {loader: 'less-loader'}]
     },{
-      test: /\.html$/,
+      test: /\.(html)$/,
       loader: 'html-loader'
     },{
       test: /\.css$/,
@@ -36,8 +36,14 @@ module.exports = {
         'style-loader',
         'css-loader']
     },{
-      test: /\.(png|svg|jpg|gif|obj|mtl)$/,
-      use: ['file-loader']
+      test: /\.(png|jpg|gif|obj|mtl)$/,
+      use: [{
+        loader: 'file-loader',
+        options: { outputPath: 'files'}
+      }]
+    },{
+      test: /\.svg$/,
+      loader: 'svg-inline-loader'
     }]
   },
   plugins: [
