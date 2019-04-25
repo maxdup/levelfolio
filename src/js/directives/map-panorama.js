@@ -69,13 +69,15 @@ function map_panorama($window, $timeout, $sce, $transitions){
           scope.heldControl = false;
         }
       };
-      $transitions.onStart({}, function(transition){
+      var unhook = $transitions.onStart({}, function(transition){
         if (scope.focus) {
           scope.v360();
           return false;
         }
         return true;
       });
+      scope.$on('$destroy', unhook);
+
       function onDocumentMouseDown(event) {
         if (scope.focus) {
           event.preventDefault();

@@ -1,9 +1,5 @@
-var Isotope = require('isotope-layout');
-require('isotope-masonry-horizontal');
-
 function pageController(
-  $rootScope, $scope, $window, $timeout, $document,
-  ModalService, $state, $stateParams, $transitions) {
+  $scope, $stateParams) {
   "ngInject"
 
   function queue() {
@@ -31,28 +27,6 @@ function pageController(
   }
   queue();
 
-  $transitions.onStart({}, function(transition){
-    if ($scope.modalactive === true) {
-      $scope.modalactive = false;
-      $scope.modal.scope.close();
-    }
-  })
-  /*$scope.viewimagemodal = function(image) {
-    if (image == null) {
-    image = '';
-    }
-    return ModalService.showModal({
-    template: require("../partials/widgets/modal_image.html"),
-    controller: "ModalController"
-    }).then(function(modal) {
-    $scope.modal = modal;
-    $scope.modalactive = true;
-    modal.scope.image = image;
-    return modal.close.then(function(result) {
-    return $scope.modalactive = false;
-    });
-    });
-    };*/
   /*$scope.viewcarouselmodal = function(id) {
     if (id == null) {
     id = '';

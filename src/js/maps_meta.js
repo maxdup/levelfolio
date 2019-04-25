@@ -101,6 +101,7 @@ var maps = {
       { image: require('../images/occult/koth_occult_rc43.jpg'), id: 3 },
       { image: require('../images/occult/koth_occult_rc44.jpg'), id: 4 }
     ],
+    more_images: { 'pcgamer': require('../images/occult/pcgamer.jpg')},
     panorama: require('../images/occult/koth_occult360.jpg')
   },
   effigy: {

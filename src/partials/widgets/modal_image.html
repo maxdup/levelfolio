@@ -1,7 +1,7 @@
 <div id="custom-modal">
   <div class="modal-wrap">
     <div id="overlay">
-      <span class="glyphicon glyphicon-remove close" ng-click="close()"></span>
+      <div class="icon close" ng-bind-html="icon_close" ng-click="close()"></div>
       <img src={{image}}></img>
     </div>
     <div class="fade" ng-click="close()"></div>

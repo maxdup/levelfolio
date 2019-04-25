@@ -14,6 +14,7 @@ import isotope from './js/directives/isotope'
 import map_viewer from './js/directives/map-viewer'
 import map_summary from './js/directives/map-summary'
 import map_panorama from './js/directives/map-panorama'
+import modal_image from './js/directives/modal-image'
 
 import './less/main.less';
 import './less/navbar.less';
@@ -65,9 +66,7 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
   .directive("mapViewer", map_viewer)
   .directive("mapPanorama", map_panorama)
   .directive("mapSummary", map_summary)
+  .directive("modalImage", modal_image)
   .controller('RootController', rootController)
   .controller('PageController', pageController)
-  .controller('ModalController', function($scope, close) {
-    return $scope.close = close;
-  })
 
