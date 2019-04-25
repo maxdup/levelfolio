@@ -1,4 +1,4 @@
-function map_viewer($animate, $timeout, $sce){
+function map_viewer($animate, $timeout){
   'ngInject'
 
   return {
@@ -7,10 +7,6 @@ function map_viewer($animate, $timeout, $sce){
     replace: true,
     scope: { map: '=' },
     link: function(scope, element) {
-
-      scope.icon_cog = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/gear.svg'));
-      scope.icon_info = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/info.svg'));
-      scope.icon_close = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/x.svg'));
 
       function hidecontrols() {
         scope.controlsGlimpse3d = false;

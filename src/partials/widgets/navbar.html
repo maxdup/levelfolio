@@ -20,8 +20,9 @@
        href="/code">{{'nav-code' | translate}}</a>
     <a ng-class="{ active: isActive('/contact')}"
        href="/contact">{{'nav-contact' | translate}}</a>
-    <a class="navbar-menu-toggle" ng-bind-html="icon_menu"
+    <a class="navbar-menu-toggle"
        ng-class="{'active': isNavOpen}" ng-click="toggle_open()">
+      <i class="lvl lvl-grabber"></i>
     </a>
   </div>
 

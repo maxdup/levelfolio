@@ -1,4 +1,4 @@
-function map_panorama($window, $timeout, $sce, $transitions){
+function map_panorama($window, $timeout, $transitions){
   "ngInject"
 
   return {
@@ -9,8 +9,6 @@ function map_panorama($window, $timeout, $sce, $transitions){
       focus: '='
     },
     link: function(scope, element) {
-      scope.icon_chevron = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/chevron-right.svg'));
-      scope.icon_info = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/info.svg'));
 
       var camera, scene, mesh, material, renderer, phi, theta,
           lon, onPointerDownLon, onPointerDownPointerX, onMouseDownLon,

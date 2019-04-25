@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -42,11 +43,20 @@ module.exports = {
         options: { outputPath: 'files'}
       }]
     },{
+      test: /\.font\.js/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        'webfonts-loader']
+    },{
       test: /\.svg$/,
       loader: 'svg-inline-loader'
     }]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'app.bundle.[contenthash].css'
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
       inject: true,

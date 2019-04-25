@@ -1,4 +1,4 @@
-function modal_image(ModalService, $sce, $transitions){
+function modal_image(ModalService, $transitions){
   "ngInject"
   return {
     restrict: 'A',
@@ -7,13 +7,11 @@ function modal_image(ModalService, $sce, $transitions){
       var modalInstance;
       element.on('click', function(){
         ModalService.showModal({
-          template: require("../../partials/widgets/modal_image.html"),
+          template: require("../../partials/widgets/modal-image.html"),
           controller: function($scope, imagePath, close) {
             "ngInject"
 
             $scope.close = close;
-            $scope.icon_close =
-              $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/x.svg'));
             $scope.image = imagePath
           },
           inputs: {

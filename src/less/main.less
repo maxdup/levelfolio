@@ -134,9 +134,10 @@ isotope, .isotope-container {
     display: inline-block;
     white-space: normal;
 }
-.boxes {
-}
 
+i.lvl {
+    color: white;
+}
 .box {
     .box-w1;
     .box-h1;
@@ -256,7 +257,9 @@ a.box.box-photo {
         font-size: 14px;
         line-height: 21px;
     }
-    i { color: #404040; }
+    .install{
+        i { color: #404040; }
+    }
     img.title {
         margin-top: -20%;
         height: auto;
@@ -287,8 +290,18 @@ a.box.box-photo {
         line-height: 110%;
         margin: 1.14rem 0 0.912rem 0;
         a {
-            text-decoration: underline;
             color: white;
+            text-decoration: none;
+            span {
+                text-decoration: underline;
+                margin-right: 3px;
+            }
+            i { font-size: 20px; }
+            &:hover {
+                i, span {
+                    color: #bbb;
+                }
+            }
         }
         img {
             vertical-align: middle;
@@ -386,9 +399,7 @@ a.box.box-photo {
             height: 15px;
             vertical-align: middle;
             &:hover {
-                svg {
-                    fill: #bbbbbb;
-                }
+                i { color: #bbbbbb; }
             }
         }
         h3 {
@@ -405,11 +416,8 @@ a.box.box-photo {
                 bottom: 25px;
                 width: 30px;
                 height: 30px;
-                svg {
-                    width: 30px;
-                    height: 45px;
-                    padding-bottom: 10px;
-                }
+                text-align: center;
+                i {font-size: 40px;}
             }
         }
         ol {
@@ -495,13 +503,17 @@ a.box.box-photo {
             color: white;
             text-decoration: none;
             &:hover {
-                text-decoration: underline;
+                span {
+                    text-decoration: underline;
+                }
             }
         }
-        ul {
-            img{
-                height: 60px;
-                width: 60px;
+        ul.links {
+            li {
+                margin: 20px 0px;
+            }
+            .lvl{
+                font-size: 50px;
                 margin-right: 10px;
                 vertical-align:middle;
             }
@@ -523,8 +535,7 @@ a.box.box-photo {
         left: 0;
         margin: auto;
         margin-right: 20px;
-        margin-top: 75px;
-        font-size: 300px;
+        margin-top: 65px;
         color: white;
         transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 
@@ -534,15 +545,10 @@ a.box.box-photo {
         }
 
         .icon {
-            svg {
-                display: block;
-                opacity: 0.5;
-                height: 100px;
-                width: auto;
-                &:hover {
-                    opacity: 1;
-                }
-            }
+            .x-button;
+            font-size: 100px;
+            display: block;
+            width: auto;
         }
     }
     .container-curtain {
@@ -590,12 +596,10 @@ a.box.box-photo {
         width: 47%;
         height: auto;
     }
-    .icon {
+    .info {
+        .base-button;
+        cursor: default;
         display: inline-block;
-        svg {
-            height: 40px;
-            width: 40px;
-        }
     }
 
 }
@@ -676,20 +680,8 @@ a.box.box-photo {
     }
 
     .close {
-        color: white;
-        opacity: 0.5;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        text-align: center;
-        svg {
-            width: 30px;
-            height: auto;
-        }
-        &:hover {
-            opacity: 0.75;
-        }
+        .x-button;
+        font-size: 30px;
     }
     .loading{
         position: absolute;
@@ -716,10 +708,14 @@ a.box.box-photo {
             bottom: 0;
             left: 0;
             right: 0;
-            svg {
-                height:100px;
-                width: 100px;
-
+            i {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                text-align: center;
+                font-size: 100px;
             }
             animation: spin 7s infinite linear;
             -webkit-animation: spin2 7s infinite linear;
@@ -766,6 +762,11 @@ a.box.box-photo {
         }
     }
     .button-left,
+    .button-right,
+    .button-fullscreen {
+        .base-button;
+    }
+    .button-left,
     .button-right {
         position: absolute;
         top: 0;
@@ -773,45 +774,72 @@ a.box.box-photo {
         right: 0;
         bottom: 0;
         width: 15%;
-        font-size: 20px;
+        font-size: 40px;
         background-color: rgba(0,0,0,0);
-
         filter: alpha(opacity=50);
-        opacity: .05;
-        border: 2px solid black;
+        i{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            height: 50px;
+            width: 50px;
+            right: 0;
+            margin: auto;
+        }
         &:hover {
+            i { colot: white;}
             color: #fff;
             text-decoration: none;
             outline: 0;
-            opacity: 0.35;
+            &:after {
+                opacity: 0.35;
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            opacity: .05;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
         }
     }
     .button-right {
         left: auto;
-        border-left-width: 0px;
-        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-        background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
-        background-image: linear-gradient(to right,rgba(255,255,255,.0001) 0,rgba(255,255,255,.5) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-        background-repeat: repeat-x;
+        i { left: auto;}
+        &:after {
+            background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+            background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+            background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
+            background-image: linear-gradient(to right,rgba(255,255,255,.0001) 0,rgba(255,255,255,.5) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+            background-repeat: repeat-x;
+        }
     }
     .button-left {
         right: auto;
-        border-right-width: 0px;
-        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
-        background-image: linear-gradient(to right,rgba(255,255,255,.5) 0,rgba(255,255,255,.0001) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-        background-repeat: repeat-x;
+        i { right: auto;}
+        &:after {
+            background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+            background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+            background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
+            background-image: linear-gradient(to right,rgba(255,255,255,.5) 0,rgba(255,255,255,.0001) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+            background-repeat: repeat-x;
+        }
     }
     .button-fullscreen {
         position: absolute;
         right: 5px;
         bottom: 21px;
-        height: 25px;
-        width: 25px;
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+        &:hover {
+            text-shadow: white 1px 0 10px;
+        }
     }
     .space-fullscreen {
         .box-photo-clickable;
@@ -1022,6 +1050,21 @@ a {
         position: relative;
     }
 }
+.base-button {
+    opacity: 0.5;
+    cursor: pointer;
+    text-align: center;
+    &:hover {
+        opacity: 0.90;
+    }
+}
+.x-button {
+    .base-button;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
 #custom-modal {
     #overlay {
         position: relative;
@@ -1032,15 +1075,9 @@ a {
         margin: 2%;
         z-index: 16;
         .text-center { height: 100%;}
-        .icon {
-            opacity: 0.5;
-            svg {
-                height: 40px;
-                width: 40px;
-            }
-            &:hover {
-                opacity: 0.90;
-            }
+        a {
+            .x-button;
+            font-size: 50px;
         }
         img {
             height: 100%;

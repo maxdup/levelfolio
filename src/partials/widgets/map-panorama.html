@@ -1,11 +1,13 @@
 <div id="panorama">
   <div class="container-pullback" ng-show="focus">
-    <div class="icon" ng-bind-html="icon_chevron" ng-click="v360()"></div>
+    <div class="icon close" ng-click="v360()">
+      <i class="lvl lvl-chevron-right"></i>
+    </div>
   </div>
   <div class="controls" ng-show="focus">
     <div class="controls" ng-show="!cshow && !controlsGlimpse">
       <div class="controls360" ng-mouseenter="cshow=true">
-        <div class="icon" ng-bind-html="icon_info"></div>
+        <div class="info"><i class="lvl lvl-info"></i></div>
       </div>
     </div>
     <div class="controls" ng-show="cshow || controlsGlimpse" ng-mouseleave="cshow=false">

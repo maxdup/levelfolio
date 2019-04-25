@@ -16,6 +16,7 @@ import map_summary from './js/directives/map-summary'
 import map_panorama from './js/directives/map-panorama'
 import modal_image from './js/directives/modal-image'
 
+require('./icons.font');
 import './less/main.less';
 import './less/navbar.less';
 

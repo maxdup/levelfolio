@@ -1,6 +1,6 @@
 <div class="box box-wrap" important="{{map['mdlshow'] ? 1 : 2}}">
-  <div id="{{map['targetid']}}"
-       class="box-3d" ng-class="{'box-click': !map['mdlshow']}">
+  <div id="{{map['targetid']}}" class="box-3d"
+       ng-class="{'box-click': !map['mdlshow']}">
 
     <!-- closed -->
     <div class="fill" ng-if="!map['mdlshow']" ng-click="open_model()">
@@ -9,12 +9,13 @@
     </div>
 
     <!-- close -->
-    <div class="icon close" ng-bind-html="icon_close"
-         ng-show="map['mdlshow'] && loaded" ng-click="close_model()"></div>
+    <div class="icon close" ng-show="map['mdlshow'] && loaded" ng-click="close_model()">
+      <i class="lvl lvl-x"></i>
+    </div>
 
     <!-- loading -->
     <div class="loading" ng-show="map['mdlshow'] && !loaded">
-      <div class="icon" ng-bind-html="icon_cog"></div>
+      <div class="icon"><i class="lvl lvl-gear"></i></div>
       <span>{{'loading' | translate}}</span>
     </div>
 
@@ -22,12 +23,12 @@
     <div class="controls3d"
          ng-if="map['mdlshow'] && loaded"
          ng-class="{'hidden': $parent.cshow || controlsGlimpse3d}">
-      <div class="icon" ng-bind-html="icon_info"
-           ng-mouseenter="$parent.cshow=true">
+      <div class="info" ng-mouseenter="$parent.cshow=true">
+        <i class="lvl lvl-info"></i>
       </div>
     </div>
-    <div class="controls" ng-mouseleave="cshow=false" ng-if="loaded"
-         ng-show="map['mdlshow'] && (cshow || controlsGlimpse3d)">
+    <div class="controls" ng-mouseleave="$parent.cshow=false" ng-if="loaded"
+         ng-show="map['mdlshow'] && ($parent.cshow || controlsGlimpse3d)">
         <div class="controls3d" ng-mouseleave="cshow=false">
           <img src="../../images/icons/icons-lcrot.png"/>
           <img src="../../images/icons/icons-mczoom.png"/>
