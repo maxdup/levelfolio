@@ -23,33 +23,27 @@
             <a href="steam://url/CommunityFilePage/{{map['workid']}}" target="_blank">
               {{'install-3' | translate}}</a>
 
-            <a class="icon" ng-bind-html="icon_exclaim" popover-trigger="'outsideClick'"
-                 uib-popover-template="'poptemplate3.html'" popover-title="Notes"></a>
+            <a class="icon" ng-bind-html="icon_exclaim" popover
+               pop-template="poptemplate3.html" pop-data="map['workid']"></a>
           </li>
           <li>
             <a href="steam://run/440//+map%20{{map['level']==0 ? 'workshop%2f':''}}{{map['workid']}}" target="_blank">
               {{'install-4' | translate}}</a>
-            <a class="icon" ng-bind-html="icon_exclaim" popover-trigger="'outsideClick'"
-                 uib-popover-template="'poptemplate4.html'" popover-title="Notes"></a>
+            <a class="icon" ng-bind-html="icon_exclaim"
+               popover pop-template="poptemplate4.html"></a>
           </li>
         </ol>
         <a class="icon" ng-bind-html="icon_chevron" ng-click="install = !install"></a>
       </div>
     </div>
     <script type="text/ng-template" id="poptemplate4.html">
-      <div>
-        {{'install-4-warn' | translate}}
-        <br/>
-        {{'install-4-alt' | translate}}
-      </div>
+      <p><b>{{'install-note' | translate}}</b>{{'install-4-warn' | translate}}</p>
+      <p><b>{{'install-alt' | translate}}</b>{{'install-4-alt' | translate}}</p>
     </script>
     <script type="text/ng-template" id="poptemplate3.html">
-      <div>
-        {{'install-3' | translate}}
-        {{'install-3-alt' | translate}}
-        <a href="http://steamcommunity.com/sharedfiles/filedetails/?id={{map['workid']}}"
-           target="_blank">{{'install-3-alt2' | translate}}</a>
-      </div>
+      <p><b>{{'install-alt' | translate}}</b>{{'install-3-alt' | translate}}
+      <a href="http://steamcommunity.com/sharedfiles/filedetails/?id={{data}}"
+         target="_blank">{{'install-3-alt2' | translate}}</a></p>
     </script>
   </div>
 </div>
