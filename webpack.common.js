@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -9,6 +8,7 @@ module.exports = {
   },
   output: {
     publicPath: '/',
+    filename: '[name].[contenthash].bundle.js'
   },
   devServer: {
     contentBase: path.join(__dirname, 'build'),
@@ -47,7 +47,6 @@ module.exports = {
     }]
   },
   plugins: [
-    //new FaviconsWebpackPlugin('./src/images/icons/favicon.png'),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
       inject: true,
