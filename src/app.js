@@ -3,7 +3,7 @@ import '@uirouter/angularjs'
 import 'angular-cookies/angular-cookies'
 import 'angular-animate/angular-animate'
 import 'angular-modal-service/dst/angular-modal-service'
-
+import './js/directives/ui-bootstrap-custom-2.5.0.js'
 import pageController from './js/page_controller.js'
 import rootController from './js/root_controller.js'
 import localeModule from './js/locale.js'
@@ -20,7 +20,8 @@ import './less/main.less';
 import './less/navbar.less';
 
 angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
-                            localeModule, 'angularModalService'])
+                            localeModule, 'angularModalService',
+                            'ui.bootstrap'])
   .config(function($urlRouterProvider, $locationProvider, $stateProvider, $compileProvider){
     "ngInject"
     $stateProvider
@@ -69,4 +70,3 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
   .directive("modalImage", modal_image)
   .controller('RootController', rootController)
   .controller('PageController', pageController)
-

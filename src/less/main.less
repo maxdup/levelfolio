@@ -202,7 +202,7 @@ a.box {
     }
 
 }
-a.box.box-photo {
+.box-photo-clickable {
     border: none;
     &:before {
         content: '';
@@ -222,6 +222,9 @@ a.box.box-photo {
             opacity: 0.05;
         }
     }
+}
+a.box.box-photo {
+    .box-photo-clickable;
 }
 
 .box-w1 { width: 290px; }
@@ -741,25 +744,152 @@ a.box.box-photo {
 .slides_control {
     height: 100%;
 }
+
 .carousel {
     height: 100%;
-
-    .item {
-        height: 100%;
-        overflow: hidden;
+    .carousel-controls {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .carousel-progress,
+        .button-fullscreen {
+            z-index: 12;
+        }
+        .button-left,
+        .button-right {
+            z-index: 11;
+        }
+        .space-fullscreen {
+            z-index: 10;
+        }
     }
+    .button-left,
+    .button-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 15%;
+        font-size: 20px;
+        background-color: rgba(0,0,0,0);
+
+        filter: alpha(opacity=50);
+        opacity: .05;
+        border: 2px solid black;
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+            outline: 0;
+            opacity: 0.35;
+        }
+    }
+    .button-right {
+        left: auto;
+        border-left-width: 0px;
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
+        background-image: linear-gradient(to right,rgba(255,255,255,.0001) 0,rgba(255,255,255,.5) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+        background-repeat: repeat-x;
+    }
+    .button-left {
+        right: auto;
+        border-right-width: 0px;
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
+        background-image: linear-gradient(to right,rgba(255,255,255,.5) 0,rgba(255,255,255,.0001) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+        background-repeat: repeat-x;
+    }
+    .button-fullscreen {
+        position: absolute;
+        right: 5px;
+        bottom: 21px;
+        height: 25px;
+        width: 25px;
+    }
+    .space-fullscreen {
+        .box-photo-clickable;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .carousel-progress {
+        position: absolute;
+        height: 6px;
+        bottom: 2px;
+        left: 0.5%;
+        right: 0.5%;
+        width: 99%;
+        opacity: 0.70;
+        cursor: pointer;
+
+        td {
+            padding: 5px;
+            border:1px solid white;
+            &:hover {
+                background: rgba(255,255,255,0.2);
+            }
+            &.active {
+                background: white;
+                opacity: 1;
+            }
+        }
+    }
+
     .carousel-inner {
         height: 100%;
-    }
-    .modalable {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        cursor: pointer;
-        &:hover {
-            background: white;
-            opacity: 0.05;
-            border: 2px solid black;
+        .item {
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: transform 0.3s;
+            transform: translateX(0);
+            display: none;
+        }
+
+        .next, .prev, .active {
+            display: block;
+        }
+        .active {
+            left: 0;
+        }
+        .active.right {
+            left: 100%;
+        }
+        .active.left {
+            left: -100%;
+        }
+        .next.left, .prev.right {
+            left: 0;
+        }
+        .item.active,
+        .item.next.left,
+        .item.prev.right {
+            left: 0;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+        .item.active.left, .item.prev {
+            left: 0;
+            -webkit-transform: translate3d(-100%,0,0);
+            transform: translate3d(-100%,0,0);
+        }
+        .item.active.right, .item.next {
+            left: 0;
+            -webkit-transform: translate3d(100%,0,0);
+            transform: translate3d(100%,0,0);
         }
     }
     .text-center{
@@ -767,8 +897,8 @@ a.box.box-photo {
     }
     img {
         height: 100%;
-        max-width: 200%;
         width: auto;
+        max-width: 200%;
         margin-left: -50px;
     }
 }
@@ -842,6 +972,8 @@ a {
     border: 1px solid #999;
     padding: 40px 25px 30px;
     width: 400px;
+    opacity: 1;
+    transition: opacity 0.2s;
     a {
         font: inherit;
         color: #444;
@@ -862,6 +994,7 @@ a {
 	    border-bottom: 0;
 	    margin-left: -17px;
 	    margin-bottom: -16px;
+
         &:after {
             content: '';
             position: absolute;
@@ -879,7 +1012,10 @@ a {
     &.hidden {
         opacity: 0;
         z-index: -100;
-        background: red;
+    }
+    &.hidden-add-active,
+    &.hidden-remove-active {
+        z-index: 1000;
     }
     span {
         display: block;
@@ -975,29 +1111,6 @@ a {
         width: 96%;
     }
 
-}
-
-.carousel-progress {
-    position: absolute;
-    height: 12px;
-    bottom: 2px;
-    left: 0.5%;
-    right: 0.5%;
-    width: 99%;
-    opacity: 0.70;
-    cursor: pointer;
-
-    td {
-        border:1px solid white;
-        &:hover {
-            background: white;
-            opacity: 0.25;
-        }
-        &.active {
-            background: white;
-            opacity: 1;
-        }
-    }
 }
 
 span.clear { clear: right; display: block; }
