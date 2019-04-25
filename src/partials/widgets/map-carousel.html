@@ -1,0 +1,8 @@
+<div class="box box-carousel">
+  <div uib-carousel active="active">
+    <div uib-slide ng-repeat="slide in map.images"
+         index="slide.id" ng-transclude>
+      <img ng-src="{{slide.image}}"/>
+    </div>
+  </div>
+</div>

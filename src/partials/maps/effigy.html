@@ -8,13 +8,7 @@
   </a>
 
   <!--carousel-->
-  <div class="box box-carousel effigy">
-    <div uib-carousel active="active">
-      <div uib-slide ng-repeat="slide in maps.effigy.images" index="slide.id">
-        <img ng-src="{{slide.image}}">
-      </div>
-    </div>
-  </div>
+  <map-carousel map="maps['effigy']"></map-carousel>
 
   <div class="box box-separator"/>
 </isotope>

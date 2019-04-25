@@ -3,13 +3,7 @@
   <map-summary map="maps['hadal']"></map-summary>
 
   <!--carousel-->
-  <div class="box box-carousel hadal" important="2">
-    <div uib-carousel active="active">
-      <div uib-slide ng-repeat="slide in maps.hadal.images" index="slide.id">
-        <img ng-src="{{slide.image}}">
-      </div>
-    </div>
-  </div>
+  <map-carousel map="maps['hadal']" important="2"></map-carousel>
 
   <!--3D-->
   <map-viewer map="maps['hadal']"></map-viewer>

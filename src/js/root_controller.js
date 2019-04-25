@@ -21,11 +21,10 @@ function rootController(
   $templateCache.put('effigy', require('../partials/maps/effigy.html'));
   $templateCache.put('occult', require('../partials/maps/occult.html'));
   $templateCache.put('hadal', require('../partials/maps/hadal.html'));
-
+  $templateCache.put("uib/template/carousel/slide.html","");
   $templateCache.put('uib/template/carousel/carousel.html',
                      require('../partials/widgets/carousel.html'));
-  $templateCache.put("uib/template/carousel/slide.html",
-                     "<div class=\"text-center\" ng-transclude></div>\n");
+
   // Load maps data
   $scope.maps = require('./maps_meta.js').default;
 

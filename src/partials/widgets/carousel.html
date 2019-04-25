@@ -1,29 +1,27 @@
-<div class="carousel">
-  <div class="carousel-inner" ng-transclude></div>
+<div class="carousel-inner" ng-transclude></div>
 
-  <div class="carousel-controls" ng-show="slides.length > 1">
-    <!-- left -->
-    <a role="button" class="button-left" ng-click="prev()"
-       ng-class="{ disabled: isPrevDisabled() }">
-      <i class="lvl lvl-chevron-left"></i>
-    </a>
-    <!-- right -->
-    <a role="button" class="button-right" ng-click="next()"
-       ng-class="{ disabled: isNextDisabled() }">
-      <i class="lvl lvl-chevron-right"></i>
-    </a>
-    <!-- progess -->
-    <table class="carousel-progress" order="1" cellpadding="10px">
-      <tr><td ng-repeat="slide in slides | orderBy:indexOfSlide track by $index"
-              ng-class="{ active: isActive(slide) }" ng-click="select(slide)">
-      </td></tr>
-    </table>
-    <!-- fullscreen button -->
-    <a class="button-fullscreen" ng-click="viewcarouselmodal('.vanguard')">
-      <i class="lvl lvl-md-expand"></i>
-    </a>
-    <!-- fullscreen space -->
-    <a class="space-fullscreen" ng-click="viewcarouselmodal('.vanguard')"></a>
+<div class="carousel-controls" ng-show="slides.length > 1">
+  <!-- left -->
+  <a role="button" class="button-left" ng-click="prev()"
+     ng-class="{ disabled: isPrevDisabled() }">
+    <i class="lvl lvl-chevron-left"></i>
+  </a>
+  <!-- right -->
+  <a role="button" class="button-right" ng-click="next()"
+     ng-class="{ disabled: isNextDisabled() }">
+    <i class="lvl lvl-chevron-right"></i>
+  </a>
+  <!-- progess -->
+  <table class="carousel-progress" order="1" cellpadding="10px">
+    <tr><td ng-repeat="slide in slides | orderBy:indexOfSlide track by $index"
+            ng-class="{ active: isActive(slide) }" ng-click="select(slide)">
+    </td></tr>
+  </table>
+  <!-- fullscreen button -->
+  <a class="button-fullscreen" ng-click="$parent.open_modal()">
+    <i class="lvl lvl-md-expand"></i>
+  </a>
+  <!-- fullscreen space -->
+  <a class="space-fullscreen" ng-click="$parent.open_modal()"></a>
 
-  </div>
 </div>

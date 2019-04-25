@@ -8,6 +8,7 @@ body {
     overflow: hidden;
     margin: 0px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: black;
     &>canvas {
         max-height:100%;
         max-width: 100%;
@@ -157,7 +158,11 @@ i.lvl {
     background: #000000;
     transition: background 0.2s;
     &:hover {
-        background: #202020;
+        background: rgb(5,5,5); /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, rgba(5,5,5,1) 0%, rgba(37,37,37,1) 100%);
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(5,5,5,1) 0%,rgba(37,37,37,1) 100%);
+        background: radial-gradient(ellipse at center, rgba(5,5,5,1) 0%,rgba(37,37,37,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050505', endColorstr='#252525',GradientType=1 );
         text-decoration: none;
     }
     &:active { text-decoration: none; }
@@ -208,7 +213,10 @@ a.box {
     &:before {
         content: '';
         position: absolute;
-        background: white;
+        background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,1) 100%);
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 30%,rgba(255,255,255,1) 100%);
+        background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 30%,rgba(255,255,255,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
         bottom: 0;
         right: 0;
         left: 0;
@@ -220,7 +228,7 @@ a.box {
     }
     &:hover {
         &:before {
-            opacity: 0.05;
+            opacity: 0.15;
         }
     }
 }
@@ -386,7 +394,10 @@ a.box.box-photo {
             border: solid 2px #333;
             border-radius: 3px;
             &:hover {
-                background: #111;
+                background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%);
+                background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
+                background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#1affffff',GradientType=1 );
                 text-decoration: none;
             }
         }
@@ -751,14 +762,14 @@ a.box.box-photo {
         bottom: 0;
         .carousel-progress,
         .button-fullscreen {
-            z-index: 12;
+            z-index: 22;
         }
         .button-left,
         .button-right {
-            z-index: 11;
+            z-index: 21;
         }
         .space-fullscreen {
-            z-index: 10;
+            z-index: 20;
         }
     }
     .button-left,
@@ -810,11 +821,10 @@ a.box.box-photo {
         left: auto;
         i { left: auto;}
         &:after {
-            background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-            background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-            background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
-            background-image: linear-gradient(to right,rgba(255,255,255,.0001) 0,rgba(255,255,255,.5) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+            background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 100%);
+            background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#80ffffff',GradientType=1 );
             background-repeat: repeat-x;
         }
     }
@@ -822,11 +832,10 @@ a.box.box-photo {
         right: auto;
         i { right: auto;}
         &:after {
-            background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-            background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-            background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
-            background-image: linear-gradient(to right,rgba(255,255,255,.5) 0,rgba(255,255,255,.0001) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+            background: -moz-linear-gradient(left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+            background: -webkit-linear-gradient(left, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=1 );
             background-repeat: repeat-x;
         }
     }
@@ -885,6 +894,10 @@ a.box.box-photo {
             transition: transform 0.3s;
             transform: translateX(0);
             display: none;
+            img {
+                object-fit: cover;
+                width: 100%;
+            }
         }
 
         .next, .prev, .active {
@@ -927,7 +940,6 @@ a.box.box-photo {
         height: 100%;
         width: auto;
         max-width: 200%;
-        margin-left: -50px;
     }
 }
 
@@ -1066,26 +1078,6 @@ a {
 
 }
 #custom-modal {
-    #overlay {
-        position: relative;
-        background: black;
-        display: inline-block;
-        height: 92%;
-        max-width: 80%;
-        margin: 2%;
-        z-index: 16;
-        .text-center { height: 100%;}
-        a {
-            .x-button;
-            font-size: 50px;
-        }
-        img {
-            height: 100%;
-            width: auto;
-            display: block;
-            margin: auto;
-        }
-    }
 
     .fade {
         position: absolute;
@@ -1097,9 +1089,6 @@ a {
         opacity: 0.75;
         z-index: 15;
     }
-    #slides_control {
-        height: 100%;
-    }
     .modal-wrap {
         position: absolute;
         text-align: center;
@@ -1107,47 +1096,79 @@ a {
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 16;
-        //margin: 2%;
-    }
-    .close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 60px;
-        width: 60px;
-        color: white;
-        z-index: 20;
-        padding-top: 10px;
-        text-align: center;
-        font-size: 30px;
-    }
-    .carousel {
-        height: 100%;
-    }
-    .carousel-inner{
-        height: 100%;
-        img{
-            height:100%;
+        z-index: 1000;
+        #overlay {
+            position: absolute;;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
             margin: auto;
-            max-width: 200%;
+            display: inline-block;
+            max-height: 85%;
+            max-width: 80%;
+            overflow: hidden;
+            z-index: 16;
+            >a {
+                .x-button;
+                z-index: 30;
+                font-size: 50px;
+            }
+            >img {
+                object-fit: contain;
+                height:100%;
+                width: 100%;
+            }
+        }
+
+    }
+    .carousel{
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        .carousel-inner {
+            position: relative;
+            display: inline-block;
         }
         .item {
-            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            height: 0;
+        }
+        .item.left, .item.right {
+            position: absolute;
             height: 100%;
+            display: inline-block;
+            z-index: 9;
+            img { object-fit: cover;
+                  width: 100%;}
+
+        }
+        .item.next, .item.prev {
+            position: absolute;
+            height: 100%;
+            display: inline-block;
+            z-index: 13;
+            img { object-fit: cover;
+                  width: 100%;}
+
+        }
+        .item.active{
+            height: 100%;
+            position: sticky;
+            z-index: 11;
             width: auto;
+            display: inline-block;
+            img { object-fit: cover;
+                  width: 100%;}
+        }
+        .text-center {
+            display: inline-block;
         }
     }
-    .carousel-control {
-        cursor: pointer;
+    .button-fullscreen, .space-fullscreen {
+        display: none;
     }
-    .carousel-progress {
-        bottom: 1.5%;
-        right: 2%;
-        left: 2%;
-        width: 96%;
-    }
-
 }
 
 span.clear { clear: right; display: block; }
@@ -1160,6 +1181,7 @@ span.clear { clear: right; display: block; }
     background: -ms-linear-gradient(top, @startColor, @endColor);
     background: -o-linear-gradient(top, @startColor, @endColor);
 }
+
 .transition (@transition) {
     -webkit-transition: @transition;
     -moz-transition:    @transition;

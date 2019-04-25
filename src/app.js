@@ -13,6 +13,7 @@ import popover from './js/directives/popover'
 import isotope from './js/directives/isotope'
 import map_viewer from './js/directives/map-viewer'
 import map_summary from './js/directives/map-summary'
+import map_carousel from './js/directives/map-carousel'
 import map_panorama from './js/directives/map-panorama'
 import modal_image from './js/directives/modal-image'
 
@@ -29,12 +30,10 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       .state('home', {
         url: '/',
         auto: true,
-        controller: 'PageController',
         template: require('./partials/pages/home.html')
       })
       .state('commercial', {
         url: '/commercial',
-        controller: 'PageController',
         template: require('./partials/pages/commercial.html')
       })
       .state('hobby',{
@@ -49,13 +48,11 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       .state('code',{
         url: '/code',
         auto: true,
-        controller: 'PageController',
         template: require('./partials/pages/code.html')
       })
       .state('contact', {
         url: '/contact',
         auto: true,
-        controller: 'PageController',
         template: require('./partials/pages/contact.html')
       });
 
@@ -67,6 +64,7 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
   .directive("isotope", isotope)
   .directive("mapViewer", map_viewer)
   .directive("mapPanorama", map_panorama)
+  .directive("mapCarousel", map_carousel)
   .directive("mapSummary", map_summary)
   .directive("modalImage", modal_image)
   .controller('RootController', rootController)

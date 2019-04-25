@@ -6,13 +6,7 @@
   <map-viewer map="maps['occult']"></map-viewer>
 
   <!--carousel-->
-  <div class="box box-carousel occult">
-    <div uib-carousel active="active">
-      <div uib-slide ng-repeat="slide in maps.occult.images" index="slide.id">
-        <img ng-src="{{slide.image}}">
-      </div>
-    </div>
-  </div>
+  <map-carousel map="maps['occult']"></map-carousel>
 
   <!--quote-->
   <a class="box box-quote"

@@ -5,13 +5,7 @@
 <map-viewer map="maps['vanguard']"></map-viewer>
 
 <!--carousel-->
-<div class="box box-carousel vanguard">
-  <div uib-carousel active="active">
-    <div uib-slide ng-repeat="slide in maps.vanguard.images" index="slide.id">
-      <img ng-src="{{slide.image}}"/>
-    </div>
-  </div>
-</div>
+<map-carousel map="maps['vanguard']"></map-carousel>
 
 <!--update page-->
 <a class="box box-quote" target="_blank"
