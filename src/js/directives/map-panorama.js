@@ -12,30 +12,30 @@ function map_panorama($window, $timeout, $sce, $transitions){
       scope.icon_chevron = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/chevron-right.svg'));
       scope.icon_info = $sce.trustAsHtml(require('../../../node_modules/octicons/build/svg/info.svg'));
 
-      var camera, hidecontrols, isUserInteracting, lat, lon, material,
-          mesh,
-          onMouseDownLat, onMouseDownLon, onPointerDownLat,
-          onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, phi,
-          renderer, routes, scene, theta, w;
+      var camera, scene, mesh, material, renderer, phi, theta,
+          lon, onPointerDownLon, onPointerDownPointerX, onMouseDownLon,
+          lat, onPointerDownLat, onPointerDownPointerY, onMouseDownLat,
+          hidecontrols, isUserInteracting;
 
       camera = null;
       scene = null;
-      renderer = null;
       mesh = null;
       material = null;
+      renderer = null;
       isUserInteracting = false;
       onPointerDownPointerX = 0;
       onPointerDownPointerY = 0;
       onPointerDownLon = 0;
       onPointerDownLat = 0;
-      lon = 0;
       onMouseDownLon = 0;
-      lat = 0;
       onMouseDownLat = 0;
+      lon = 0;
+      lat = 0;
       phi = 0;
       theta = 0;
-      scope.show = true;
 
+      var isUserInteracting = false;
+      scope.show = true;
 
       function hide_controls(){
         scope.controlsGlimpse = false;
@@ -48,10 +48,10 @@ function map_panorama($window, $timeout, $sce, $transitions){
         if (scope.focus){
           preview_controls();
         }
-      })
+      });
       scope.$watch('ngModel', function(newValue, oldValue){
         if (newValue.partial != oldValue.partial){
-          var newmap = THREE.ImageUtils.loadTexture(scope.ngModel['panorama']);
+          var newmap = new THREE.TextureLoader().load(scope.ngModel['panorama']);
           scope.show = false;
           $timeout(function() {
             material.map = newmap;
@@ -59,7 +59,7 @@ function map_panorama($window, $timeout, $sce, $transitions){
           }, 300);
           scope.v360();
         }
-      })
+      });
 
       scope.heldControl = false;
 
@@ -161,7 +161,7 @@ function map_panorama($window, $timeout, $sce, $transitions){
         renderer.render(scene, camera);
       };
       scope.load();
-      w = angular.element($window);
+      var w = angular.element($window);
       w.bind('resize', function() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
