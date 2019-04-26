@@ -55,7 +55,11 @@ angular.module('folio.Locale', ['pascalprecht.translate'])
         'unavailable': 'Unavailable',
         'hire': 'for hire',
         'contract': 'for contract',
-        'cv': 'Add this one to the pile!'
+        'cv': 'Add this one to the pile!',
+        'contact-youtube': 'My Youtube channel',
+        'contact-linkedin': 'My LinkedIn',
+        'contact-facebook': 'My Facebook profile',
+        'contact-github': 'My Github account',
       });
       $translateProvider.translations('fr', {
         'nav-title': 'Concepteur de niveau',
@@ -106,7 +110,12 @@ angular.module('folio.Locale', ['pascalprecht.translate'])
         'unavailable': 'Non Disponible',
         'hire': 'pour emplois',
         'contract': 'pour contrat',
-        'cv': 'Un autre pour la pile!'
+        'cv': 'Un autre pour la pile!',
+        'contact-youtube': 'Ma Chaine Youtube',
+        'contact-linkedin': 'Mon LinkedIn',
+        'contact-facebook': 'Mon profile Facebook',
+        'contact-github': 'My compte Github',
+
       });
       $translateProvider.preferredLanguage('en');
       return $translateProvider.useSanitizeValueStrategy('escapeParameters');
