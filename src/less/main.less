@@ -381,7 +381,10 @@ a.box.box-photo {
         &.ng-hide-remove, &.ng-hide-add {
             transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
         }
-        &>a {
+        a.play {
+            position: absolute;
+            bottom: 0;
+            right: 0;
             float: right;
             padding-bottom: 10px;
             padding-right: 25px;
@@ -413,9 +416,7 @@ a.box.box-photo {
                 i { color: #bbbbbb; }
             }
         }
-        h3 {
-            font-size: 30px;
-        }
+        h3 { font-size: 30px; }
         &>div {
             padding: 20px 20px 40px;
             color: white;
@@ -575,7 +576,50 @@ a.box.box-photo {
         }
     }
 }
-
+.loading{
+    position: absolute;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    display: inline-block;
+    span {
+        color: white;
+        margin: auto;
+        position: absolute;
+        font-size: 25px;
+        top: 150px; left: 0; bottom: 0; right: 0;
+        width: 200px;
+        height:40px;
+    }
+    .icon {
+        height:100px;
+        width: 100px;
+        text-align: center;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+                font-size: 100px;
+        }
+        animation: spin 7s infinite linear;
+        -webkit-animation: spin2 7s infinite linear;
+    }
+}
+.debug-data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+}
 .controls {
     position: absolute;
     min-height: 90px;
@@ -598,7 +642,7 @@ a.box.box-photo {
     display: inline-block;
     bottom: 0;
     max-width: 20%;
-    min-width: 75px;
+    min-width: 250px;
     min-height: 75px;
     margin-top: 10px;
     color: white;
@@ -694,45 +738,6 @@ a.box.box-photo {
         .x-button;
         font-size: 30px;
     }
-    .loading{
-        position: absolute;
-        margin: auto;
-        top: 0; left: 0; bottom: 0; right: 0;
-        text-align: center;
-        display: inline-block;
-        span {
-            color: white;
-            margin: auto;
-            position: absolute;
-            font-size: 25px;
-            top: 150px; left: 0; bottom: 0; right: 0;
-            width: 200px;
-            height:40px;
-        }
-        .icon {
-            height:100px;
-            width: 100px;
-            text-align: center;
-            position: absolute;
-            margin: auto;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            i {
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                text-align: center;
-                font-size: 100px;
-            }
-            animation: spin 7s infinite linear;
-            -webkit-animation: spin2 7s infinite linear;
-
-        }
-    }
 }
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg);}
@@ -743,11 +748,8 @@ a.box.box-photo {
     to { transform: scale(1) rotate(360deg);}
 }
 
-.play {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
+
+
 .slides_control {
     height: 100%;
 }

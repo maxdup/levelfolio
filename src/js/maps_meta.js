@@ -39,7 +39,8 @@ var maps = {
       { image: require('../images/vanguard/cp_vanguard_rc63.jpg'), id: 3 },
       { image: require('../images/vanguard/cp_vanguard_rc64.jpg'), id: 4 }
     ],
-    panorama: require('../images/vanguard/cp_vanguard360.jpg')
+    panorama: require('../images/vanguard/cp_vanguard360.jpg'),
+    panorama_angle: 137,
   },
   hadal: {
     name: 'hadal',
@@ -74,7 +75,8 @@ var maps = {
       { image: require('../images/hadal/cp_hadal_b133.jpg'), id: 3 },
       { image: require('../images/hadal/cp_hadal_b134.jpg'), id: 4 }
     ],
-    panorama: require('../images/hadal/cp_hadal360.jpg')
+    panorama: require('../images/hadal/cp_hadal360.jpg'),
+    panorama_angle: 103,
   },
   occult: {
     name: 'occult',
@@ -102,7 +104,8 @@ var maps = {
       { image: require('../images/occult/koth_occult_rc44.jpg'), id: 4 }
     ],
     more_images: { 'pcgamer': require('../images/occult/pcgamer.jpg')},
-    panorama: require('../images/occult/koth_occult360.jpg')
+    panorama: require('../images/occult/koth_occult360.jpg'),
+    panorama_angle: -23,
   },
   effigy: {
     name: 'effigy',
@@ -118,7 +121,8 @@ var maps = {
       { image: require('../images/effigy/pl_effigy_rc23.jpg'), id: 3 },
       { image: require('../images/effigy/pl_effigy_rc24.jpg'), id: 4 }
     ],
-    panorama: require('../images/effigy/pl_effigy360.jpg')
+    panorama: require('../images/effigy/pl_effigy360.jpg'),
+    panorama_angle: 168,
   }
 };
 export default maps;

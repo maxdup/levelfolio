@@ -10,6 +10,8 @@ function map_panorama($window, $timeout, $transitions){
     },
     link: function(scope, element) {
 
+      scope.debug = false;
+
       var camera, scene, mesh, material, renderer, phi, theta,
           lon, onPointerDownLon, onPointerDownPointerX, onMouseDownLon,
           lat, onPointerDownLat, onPointerDownPointerY, onMouseDownLat,
@@ -43,19 +45,40 @@ function map_panorama($window, $timeout, $transitions){
         $timeout(hide_controls, 2000);
       }
       scope.$watch('focus', function(newValue, oldValue){
-        if (scope.focus){
+        if (scope.focus && scope.show){
           preview_controls();
         }
       });
+      function makeCameraVector(longitude, latitude){
+        if (!camera.target){
+          camera.target = new THREE.Vector3(0,0,0);
+        }
+        lon = longitude || lon;
+        lat = Math.max(-85, Math.min(85, latitude));
+        phi = toRad(90 - lat);
+        theta = toRad(longitude);
+        camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
+        camera.target.y = 500 * Math.cos(phi);
+        camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
+        return camera.target;
+      }
+      function loadMap(){
+        scope.show = false;
+        function textureCallback(callback){
+          makeCameraVector(scope.ngModel.panorama_angle, 0);
+          camera.lookAt(camera.target);
+          material.map = newmap;
+          scope.show = true;
+          preview_controls();
+          scope.$apply();
+        }
+        var newmap = new THREE.TextureLoader().load(
+          scope.ngModel['panorama'], textureCallback);
+        scope.v360();
+      }
       scope.$watch('ngModel', function(newValue, oldValue){
-        if (newValue.partial != oldValue.partial){
-          var newmap = new THREE.TextureLoader().load(scope.ngModel['panorama']);
-          scope.show = false;
-          $timeout(function() {
-            material.map = newmap;
-            scope.show = true;
-          }, 300);
-          scope.v360();
+        if (newValue.panorama != oldValue.panorama){
+          loadMap();
         }
       });
 
@@ -92,8 +115,9 @@ function map_panorama($window, $timeout, $transitions){
       function onDocumentMouseMove(event) {
         if (isUserInteracting && scope.focus) {
           scope.heldControl = true;
-          lon = (onPointerDownPointerX - event.clientX) * 0.1 + onPointerDownLon;
-          lat = (event.clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat;
+          makeCameraVector(
+            (onPointerDownPointerX - event.clientX) * 0.1 + onPointerDownLon,
+            (event.clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat);
         }
       };
       function onDocumentMouseWheel(event) {
@@ -116,9 +140,10 @@ function map_panorama($window, $timeout, $transitions){
       scope.init = function() {
 
         var geometry, tdcontainer;
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.target = new THREE.Vector3(0, 0, 0);
+        camera = new THREE.PerspectiveCamera(
+          75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = -100;
+        makeCameraVector(scope.ngModel.panorama_angle, 0);
         camera.lookAt(camera.target);
         scene = new THREE.Scene();
         geometry = new THREE.SphereGeometry(500, 60, 40);
@@ -147,14 +172,16 @@ function map_panorama($window, $timeout, $transitions){
       }
       scope.update = function() {
         if (!scope.heldControl) {
-          lon += 0.03;
+          makeCameraVector(lon + 0.03, lat);
         }
-        lat = Math.max(-85, Math.min(85, lat));
-        phi = toRad(90 - lat);
-        theta = toRad(lon);
-        camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
-        camera.target.y = 500 * Math.cos(phi);
-        camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
+
+        if (scope.debug == true){
+          scope.coords = {x:camera.target.x,
+                          y:camera.target.y,
+                          z:camera.target.z,
+                          lon: lon}
+          scope.$apply();
+        }
         camera.lookAt(camera.target);
         renderer.render(scene, camera);
       };
