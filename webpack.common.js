@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -63,6 +64,9 @@ module.exports = {
       chunks: ['app'],
       filename: 'index.html'
     }),
+    new CopyPlugin([
+      { from: 'src/files', to: 'files' },
+    ]),
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery',
       jQuery: 'jquery',
