@@ -1,5 +1,5 @@
 function rootController(
-  $rootScope, $scope, $state, $transitions, $timeout, $templateCache) {
+  $rootScope, $scope, $state, $transitions, $timeout, $templateCache, $window) {
   "ngInject"
 
   var  hidecontrols, isUserInteracting, lat, lon, material,
@@ -9,12 +9,15 @@ function rootController(
       renderer, routes, scene, theta, w;
 
   // Horizontal scrolling
-  var page = document.querySelector('.page');
-  var content = document.querySelector('.content');
-  angular.element(page).bind('mousewheel', function(event, delta){
+  var content = document.querySelector('.scrollable');
+  function scroll(event, delta){
+    if (event.originalEvent.deltaMode == 1){
+      content.scrollLeft += event.originalEvent.deltaY * 16;
+    }else{
       content.scrollLeft += event.originalEvent.deltaY;
-      event.preventDefault();
-    });
+    }
+  }
+  angular.element(content).bind('wheel', scroll);
 
   // Include templates
   $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
@@ -38,6 +41,9 @@ function rootController(
   // Routing routines
   var states = $state.get();
   $transitions.onStart({}, function(transition){
+    // reset scrolling
+    content.scrollLeft = 0;
+
     // Determine route change direction
     var from = transition.from().name;
     var to = transition.to().name;

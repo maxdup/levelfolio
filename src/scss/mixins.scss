@@ -59,7 +59,7 @@ $hx: 100%;
 }
 
 @mixin box-photo-clickable {
-       border: none;
+    border: none;
     &:before {
         content: '';
         position: absolute;
@@ -67,11 +67,10 @@ $hx: 100%;
             radial-gradient(ellipse at center,
                             rgba(255,255,255,0.02) 20%,
                             rgba(255,255,255,0.1)));
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-        border: 2px solid black;
+        bottom: 2px;
+        right: 2px;
+        left: 2px;
+        top: 2px;
         z-index: 4;
         @include opacity(0);
         @include transition(opacity, 0.2s);

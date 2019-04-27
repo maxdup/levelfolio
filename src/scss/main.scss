@@ -7,18 +7,6 @@
 
 * { @include box-sizing(border-box) }
 
-body {
-    overflow: hidden;
-    margin: 0px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: black;
-    &>canvas {
-        max-height:100%;
-        max-width: 100%;
-        overflow: hidden;
-    }
-}
-
 div {
     line-height: 1.5;
     font-weight: normal;
@@ -87,41 +75,21 @@ canvas {
     }
 }
 
-.view {
-    &.ng-enter {
-        @include transition(left opacity, 0.5s);
-        display:block;
+body {
+    overflow: hidden;
+    margin: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: black;
+    &>canvas {
+        max-height:100%;
+        max-width: 100%;
         overflow: hidden;
-    }
-    &.ng-leave {
-        @include transition(left opacity, 0.5s);
-        display:block;
-        overflow: hidden;
-    }
-    &.ng-enter {
-        left:100%;
-    }
-    &.ng-enter.ng-enter-active {
-        left:100px;
-    }
-    &.ng-leave.ng-leave-active {
-        @include opacity(0);
-    }
-    &.reverse {
-        &.ng-enter {
-            left:-100%;
-        }
-        &.ng-enter.ng-enter-active {
-            left:100px;
-        }
     }
 }
 
-
 .container {
-    display: table;
+    display: block;
     position: absolute;
-    width: 100%;
     height: 100%;
     padding: 0;
     margin-left: 0;
@@ -131,65 +99,109 @@ canvas {
         @include opacity(0);
     }
 }
-.icon {
-    color: white;
-    fill: white;
-    height: 40px;
-    width: 40px;
-}
 
 
 .page { @include page-base; }
 .page-centering {
     max-height: 840px;
+    min-width: 100%;
     position: absolute;
-    width: 100%;
     top: 2%;
     bottom: 2%;
-    right: 0;
     left: 0;
     margin: auto;
+    @include transition(transform opacity);
+}
+.page-nav {
+    position: fixed;
+    width: 0;
+    min-width: 0;
+    z-index: 1000;
 }
 .page-background {
     @include page-base;
-    position: absolute;
+    z-index:-1 ;
+    position: fixed;
     background: #202020;
     @include opacity(0.90);
 }
 .page-padded {
     padding: 20px 100px;
 }
-.page-margin {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.pano-clickable {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     cursor: pointer;
 }
 
 
 .content {
-    position: absolute;
-    top: 125px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 8px;
+    padding-top: 125px;
+}
+ui-view {
+    position: relative;
+    height: 100%;
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 100px;
+    overflow: hidden;
+    &.ng-enter {
+        @include transition(margin-left opacity, 0.5s);
+        display:block;
+    }
+    &.ng-leave {
+        @include transition(margin-left opacity, 0.5s);
+        display:block;
+    }
+
+    &.ng-enter { margin-left:100vw; }
+    &.ng-leave { margin-left:-100vw; }
+
+    &.ng-enter.ng-enter-active {
+        margin-left:100px;
+        z-index: -1;
+    }
+    &.ng-leave.ng-leave-active {
+        margin-left:100px;
+        z-index: -1;
+    }
+    &.ng-leave.ng-leave-active { @include opacity(0); }
+    &.reverse {
+        &.ng-enter { margin-left:-100vw; }
+        &.ng-leave { margin-left: 100vw; }
+        &.ng-enter.ng-enter-active {
+            margin-left:100px;
+        }
+        &.ng-leave.ng-leave-active {
+            margin-left: 100px;
+        }
+    }
+}
+.scrollable {
+    &.hidden {
+        .pano-clickable {
+            display: none;
+        }
+        .page-centering {
+            @include transform(translateX(100vw));
+            @include opacity(0);
+            z-index: -1000;
+        }
+    }
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    bottom: 20px;
-    overflow: auto;
+    bottom: 0;
+    overflow-x: scroll;
     overflow-y: hidden;
-    padding-left: 100px;
-}
-.scrollbox {
-    height: 100%;
-    overflow-x: visible;
-    overflow-y: hidden;
-}
-.scrollbox-padded {
-    position: absolute;
-    top:0;
-    left:100px;
-    right:0;
-    bottom: 20px;
-    white-space: nowrap;
-    display: block;
 }
 
 isotope, .isotope-container {
@@ -198,7 +210,12 @@ isotope, .isotope-container {
     display: inline-block;
     white-space: normal;
 }
-
+.icon {
+    color: white;
+    fill: white;
+    height: 40px;
+    width: 40px;
+}
 i.lvl {
     color: white;
 }
@@ -714,8 +731,26 @@ i.lvl {
     }
     .box-cv { @include box-h($h12); }
 }
-
+map-panorama, #panorama, body>canvas {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 #panorama {
+    cursor: grab;
+    &:active {
+        cursor: grabbing;
+    }
+    canvas {
+        position: fixed;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
     .container-pullback {
         position: absolute;
         height: 300px;
