@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="scrollable" ng-class="{'hidden':focus360}">
+  <div id="scrollable" ng-class="{'hidden':focus360}">
     <!-- Map panoramas -->
     <div class="pano-clickable" ng-click="focus360 = true"></div>
     <map-panorama ng-model="current_panorama" focus="focus360">

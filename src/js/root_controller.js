@@ -9,15 +9,17 @@ function rootController(
       renderer, routes, scene, theta, w;
 
   // Horizontal scrolling
-  var content = document.querySelector('.scrollable');
+  var scrolldiv = document.querySelector('#scrollable');
   function scroll(event, delta){
+    if (Math.abs(event.originalEvent.deltaX) > 0){ return }
+    if (event.originalEvent.shiftKey){ return }
     if (event.originalEvent.deltaMode == 1){
-      content.scrollLeft += event.originalEvent.deltaY * 16;
+      scrolldiv.scrollLeft += event.originalEvent.deltaY * 16;
     }else{
-      content.scrollLeft += event.originalEvent.deltaY;
+      scrolldiv.scrollLeft += event.originalEvent.deltaY;
     }
   }
-  angular.element(content).bind('wheel', scroll);
+  angular.element(scrolldiv).bind('wheel', scroll);
 
   // Include templates
   $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
@@ -42,7 +44,7 @@ function rootController(
   var states = $state.get();
   $transitions.onStart({}, function(transition){
     // reset scrolling
-    content.scrollLeft = 0;
+    scrolldiv.scrollLeft = 0;
 
     // Determine route change direction
     var from = transition.from().name;
