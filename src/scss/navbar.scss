@@ -101,7 +101,7 @@ nav {
         margin-left: 10px;
         margin-bottom: 3px;
         border: solid 1px grey;
-        .border-radius(3px);
+        //.border-radius(3px);
 
         padding: 5px;
         width: 50px;
@@ -186,7 +186,7 @@ nav {
 
 }
 
-.border-radius (@radius: 5px) {
+/*.border-radius (@radius: 5px) {
     -webkit-border-radius: @radius;
     -moz-border-radius:    @radius;
     border-radius:         @radius;
@@ -194,4 +194,4 @@ nav {
     -moz-background-clip:    padding;
     -webkit-background-clip: padding-box;
     background-clip:         padding-box;
-}
+}*/

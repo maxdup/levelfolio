@@ -25,18 +25,22 @@ module.exports = {
       exclude: /node-modules/,
       loader: 'babel-loader',
     },{
+      test: /\.css$/,
+      use: [{ loader: 'style-loader'},
+            { loader: 'css-loader'}]
+    },{
       test: /\.less$/,
-      use: [{loader: 'style-loader'},
-             {loader: 'css-loader'},
-             {loader: 'less-loader'}]
+      use: [{ loader: 'style-loader'},
+            { loader: 'css-loader'},
+            { loader: 'less-loader'}]
+    },{
+      test: /\.scss$/,
+      use: [{ loader: 'style-loader' },
+            { loader: 'css-loader' },
+            { loader: 'sass-loader' }]
     },{
       test: /\.(html)$/,
       loader: 'html-loader'
-    },{
-      test: /\.css$/,
-      loaders: [
-        'style-loader',
-        'css-loader']
     },{
       test: /\.(png|jpg|gif|obj|mtl)$/,
       use: [{

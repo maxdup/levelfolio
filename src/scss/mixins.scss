@@ -1,0 +1,115 @@
+@mixin page-base {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+$w1: 290px;
+$w2: 590px;
+$wx: 440px;
+$h1: 190px;
+$h2: 390px;
+$h12: 290px;
+$hx: 100%;
+@mixin base-button {
+    cursor: pointer;
+    opacity: 0.5;
+    text-align: center;
+    &:hover {
+        opacity: 0.90;
+    }
+}
+@mixin x-button {
+    @include base-button;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@mixin box-w($wn){ width: $wn; }
+@mixin box-h($hn){ height: $hn; }
+@mixin box {
+    @include box-w($w1);
+    @include box-h($h1);
+    float: left !important;
+    background: black;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    max-height: 590px;
+    box-sizing: border-box;
+    &.big {
+        @include box-w($w2);
+        @include box-h($hx);
+    }
+}
+@mixin box-click {
+    cursor: pointer;
+    border: 2px solid black;
+    text-decoration: none;
+    background: #000000;
+    transition: background 0.2s;
+    &:hover {
+        background: rgb(5,5,5); /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, rgba(5,5,5,1) 0%, rgba(37,37,37,1) 100%);
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(5,5,5,1) 0%,rgba(37,37,37,1) 100%);
+        background: radial-gradient(ellipse at center, rgba(5,5,5,1) 0%,rgba(37,37,37,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050505', endColorstr='#252525',GradientType=1 );
+        text-decoration: none;
+    }
+    &:active { text-decoration: none; }
+    &:focus { text-decoration: none; }
+}
+
+@mixin box-photo-clickable {
+       border: none;
+    &:before {
+        content: '';
+        position: absolute;
+        background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,1) 100%);
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 30%,rgba(255,255,255,1) 100%);
+        background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 30%,rgba(255,255,255,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        border: 2px solid black;
+        opacity: 0;
+        z-index: 4;
+        transition: opacity 0.2s;
+    }
+    &:hover {
+        &:before {
+            opacity: 0.15;
+        }
+    }
+}
+@mixin blurb {
+    color: white;
+    padding: 17px 25px;
+    position: relative;
+    h2 {
+        font-size: 35px;
+        line-height: 40px;
+        margin-top: 18px;
+        margin-bottom: 15px;
+    }
+    p {
+        margin: 10px 0;
+        padding-top: 5px;
+    }
+    p, div {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .install{
+        i { color: #404040; }
+    }
+    img.title {
+        margin-top: -20%;
+        height: auto;
+        width: 100%;
+    }
+}

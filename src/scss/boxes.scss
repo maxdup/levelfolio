@@ -1,0 +1,290 @@
+.box { @include box; }
+.box-w1 { @include box-w($w1); }
+.box-w2 { @include box-w($w2); }
+.box-wx { @include box-w($wx); }
+.box-h1 { @include box-h($h1); }
+.box-h2 { @include box-h($h2); }
+.box-h12{ @include box-h($h12); }
+.box-hx { @include box-h($hx); }
+
+a.box, .box-click { @include box-click; }
+.blurb{ @include blurb; }
+.box-blurb {
+    @include box-w($wx);
+    @include blurb;
+    overflow: auto;
+    position: relative;
+
+    .blurb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .git {
+        float: right;
+        padding-bottom: 10px;
+        padding-right: 25px;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        line-height: 110%;
+        margin: 1.14rem 0 0.912rem 0;
+        a {
+            color: white;
+            text-decoration: none;
+            span {
+                text-decoration: underline;
+                margin-right: 3px;
+            }
+            i { font-size: 20px; }
+            &:hover {
+		        i, span {
+                    color: #bbb;
+                }
+            }
+        }
+        img {
+            vertical-align: middle;
+            margin: 5px;
+            height: 20px;
+            width: 20px;
+        }
+    }
+    .img-peak, .img-peak-up{
+        position: absolute;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        overflow: hidden;
+    }
+    .img-peak, .img-peak-up {
+        height: 300px;
+        bottom: 0;
+
+        img {
+            width:220%;
+        }
+        &:before {
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+	        //.gradient(rgba(0,0,0,1), rgba(0,0,0,0.3))
+        }
+    }
+    .img-peak-up {
+        bottom: initial;
+        top: 0;
+        height: 120px;
+        img {
+            margin-left: -466px;
+            margin-top: -14px;
+        }
+        &:before {
+            content: '';
+            //.gradient(rgba(0,0,0,0.3), rgba(0,0,0,1))
+        }
+    }
+}
+
+.box-main {
+    @extend .box-blurb;
+    height: 100%;
+    .install-box {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
+    .install {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        color: white;
+        width: 100%;
+        padding: 10px;
+
+        &.ng-hide {
+            bottom: -400px;
+        }
+        &.ng-hide-remove, &.ng-hide-add {
+            transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) \
+0.3s;
+        }
+        a.play {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            float: right;
+            padding-bottom: 10px;
+            padding-right: 25px;
+            cursor: pointer;
+            color: white;
+            font-size: 22px;
+            line-height: 110%;
+            margin: 20px 20px 30px 0;
+            padding: 15px 10px;
+            border: solid 2px #333;
+            border-radius: 3px;
+            &:hover {
+                background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%);
+                background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
+                background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#1affffff',GradientType=1 );
+                text-decoration: none;
+            }
+        }
+        a.icon {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+            &:hover {
+                i { color: #bbbbbb; }
+            }
+        }
+        h3 { font-size: 30px; }
+        &>div {
+            padding: 20px 20px 40px;
+            color: white;
+            background: #222222;
+            border: solid 1px #444444;
+            &>a.icon {
+                position: absolute;
+                right: 30px;
+                bottom: 25px;
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                i {font-size: 40px;}
+            }
+        }
+        ol {
+            color: white;
+            padding-left: 25px;
+            list-style-type: decimal;
+            a {
+                font-size: 16px;
+                color: white;
+                text-decoration: underline;
+                &:hover {
+                    color: #bbbbbb;
+                }
+            }
+        }
+        li {
+            line-height: 20px;
+        }
+    }
+}
+
+
+.box-360 {
+    img{
+        display: block;
+        margin: auto;
+        height:100%;
+        width: auto;
+    }
+}
+
+.box-photo {
+    @include box-h($hx);
+    max-height: 590px;
+
+    width: 340px;
+    overflow: hidden;
+    position: relative;
+    >img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    >img.title {
+        top: initial;
+        right: initial;
+        position: absolute;
+        height: auto;
+        width: 290px;
+        bottom: 0;
+        object-fit: unset;
+    }
+}
+
+a.box.box-photo {
+    @include box-photo-clickable;
+}
+
+.box-quote {
+    @include box-w($w2);
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 100%;
+    padding: 50px 25px;;
+    overflow: hidden;
+    b, i { font-weight: 800; }
+    .date {
+        color: white;
+        float: right;
+        font-size: 20px;
+        font-style: italic;
+        font-weight: lighter;
+        padding-top: 2px;
+    }
+}
+
+.box-wrap {
+    @include box;
+    position: relative;
+    background: none;
+}
+
+.box-3d {
+    @include box;
+    transition-property: height width;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    .controls, .controls3d {
+        display: none;
+    }
+    .fill {
+        height: 100%;
+        width: 100%;
+        .icon{
+            display: block;
+            margin: auto;
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .close {
+        @include x-button;
+        font-size: 30px;
+    }
+}
+.box-carousel {
+    @include box-w($w2);
+    @include box-h($h2);
+}
+
+.box-separator {
+    height:100%;
+    width: 40px;
+    opacity: 0;
+}
