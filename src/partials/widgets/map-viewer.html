@@ -1,9 +1,8 @@
-<div class="box box-wrap" important="{{map['mdlshow'] ? 1 : 2}}">
-  <div id="{{map['targetid']}}" class="box-3d"
-       ng-class="{'box-click': !map['mdlshow']}">
-
+<div class="box box-3d" important="{{map['mdlshow'] ? 1 : 2}}"
+     ng-class="{'box-click': !map['mdlshow']}">
+  <div id="{{map['targetid']}}" class="box-3d-inner">
     <!-- closed -->
-    <div class="fill" ng-if="!map['mdlshow']" ng-click="open_model()">
+    <div class="fill" ng-click="open_model()">
       <img align="center" src="../../images/icons/icons-3d.png" class="icon"></img>
     </div>
 

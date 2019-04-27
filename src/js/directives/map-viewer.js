@@ -39,12 +39,11 @@ function map_viewer($animate, $timeout){
           if(show == oldShow){ return }
           if (!show) {
             $animate.removeClass(element, 'big').then(reorder);
-            $animate.removeClass(element.find('.box-3d'), 'big').then(clearCanvas);
+            $animate.removeClass(element[0].children[0], 'big').then(clearCanvas);
           }
           if (show) {
             $animate.addClass(element, 'big').then(reorder);
-            return $animate.addClass(element.find('.box-3d'), 'big')
-              .then(loadThree);
+            $animate.addClass(element[0].children[0], 'big').then(loadThree);
           }
         });
       });

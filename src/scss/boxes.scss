@@ -7,7 +7,7 @@
 .box-h12{ @include box-h($h12); }
 .box-hx { @include box-h($hx); }
 
-a.box, .box-click { @include box-click; }
+a.box { @include box-click; }
 .blurb{ @include blurb; }
 .box-blurb {
     @include box-w($wx);
@@ -71,7 +71,10 @@ a.box, .box-click { @include box-click; }
             height: 100%;
             width: 100%;
             position: absolute;
-	        //.gradient(rgba(0,0,0,1), rgba(0,0,0,0.3))
+            @include background(
+                linear-gradient(to bottom,
+                                rgba(0,0,0,1),
+                                rgba(0,0,0,0.3)));
         }
     }
     .img-peak-up {
@@ -84,7 +87,10 @@ a.box, .box-click { @include box-click; }
         }
         &:before {
             content: '';
-            //.gradient(rgba(0,0,0,0.3), rgba(0,0,0,1))
+            @include background(
+                linear-gradient(to bottom,
+                                rgba(0,0,0,0.3),
+                                rgba(0,0,0,1)));
         }
     }
 }
@@ -114,8 +120,7 @@ a.box, .box-click { @include box-click; }
             bottom: -400px;
         }
         &.ng-hide-remove, &.ng-hide-add {
-            transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) \
-0.3s;
+            @include transition(bottom);
         }
         a.play {
             position: absolute;
@@ -131,12 +136,12 @@ a.box, .box-click { @include box-click; }
             margin: 20px 20px 30px 0;
             padding: 15px 10px;
             border: solid 2px #333;
-            border-radius: 3px;
+            @include border-radius(3px);
             &:hover {
-                background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%);
-                background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
-                background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.1) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#1affffff',GradientType=1 );
+                @include background(
+                    radial-gradient(center,
+                                    rgba(255,255,255,0),
+                                    rgba(255,255,255,0.1)));
                 text-decoration: none;
             }
         }
@@ -248,43 +253,44 @@ a.box.box-photo {
     }
 }
 
-.box-wrap {
+.box-3d {
     @include box;
     position: relative;
     background: none;
-}
-
-.box-3d {
-    @include box;
-    transition-property: height width;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-    .controls, .controls3d {
-        display: none;
+    .box-3d-inner {
+        @include box;
+        @include transition(height width, 0.3s, ease);
+        .controls, .controls3d {
+            display: none;
+        }
+        .fill {
+            @include box-h($h1);
+            @include box-w($w1);
+            @include box-click;
+            .icon{
+                display: block;
+                margin: auto;
+                height: 100%;
+                width: auto;
+            }
+        }
+        .close {
+            @include x-button;
+            font-size: 30px;
+        }
     }
-    .fill {
-        height: 100%;
-        width: 100%;
-        .icon{
-            display: block;
-            margin: auto;
-            height: 100%;
-            width: auto;
+    &.big {
+        .fill{
+            display: none;
+        }
+        .controls, .controls3d {
+            display: inline-block;
         }
     }
 
-    .close {
-        @include x-button;
-        font-size: 30px;
-    }
 }
+
 .box-carousel {
     @include box-w($w2);
     @include box-h($h2);
-}
-
-.box-separator {
-    height:100%;
-    width: 40px;
-    opacity: 0;
 }

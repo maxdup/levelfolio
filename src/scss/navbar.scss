@@ -101,7 +101,7 @@ nav {
         margin-left: 10px;
         margin-bottom: 3px;
         border: solid 1px grey;
-        //.border-radius(3px);
+        @include border-radius(3px);
 
         padding: 5px;
         width: 50px;
@@ -137,8 +137,7 @@ nav {
 
         overflow: hidden;
 
-        transition-property: height;
-        transition-duration: 0.3s;
+        @include transition(height, 0.3s);
         &:before, &:after {
             content: '';
             display: block;
@@ -163,13 +162,13 @@ nav {
         .nav-desktop {
             a {
                 pointer-events: none;
-                opacity: 0;
+                @include opacity(0);
                 z-index: -1;
             }
             a.navbar-menu-toggle {
                 pointer-events: all;
                 display: block;
-                opacity: 1;
+                @include opacity(1);
                 z-index: 1;
             }
         }
@@ -183,15 +182,4 @@ nav {
             display: block;
         }
     }
-
 }
-
-/*.border-radius (@radius: 5px) {
-    -webkit-border-radius: @radius;
-    -moz-border-radius:    @radius;
-    border-radius:         @radius;
-
-    -moz-background-clip:    padding;
-    -webkit-background-clip: padding-box;
-    background-clip:         padding-box;
-}*/
