@@ -1,22 +1,31 @@
 <isotope id="vanguard">
   <!--main-->
-  <map-summary map="maps['vanguard']"></map-summary>
-
-  <!--3D-->
-  <map-viewer map="maps['vanguard']"></map-viewer>
+  <map-summary map="maps['vanguard']"
+               lvl2="1" lvl3="1"></map-summary>
 
   <!--carousel-->
-  <map-carousel map="maps['vanguard']"></map-carousel>
+  <map-carousel map="maps['vanguard']"
+                lvl2="1" lvl3="3"></map-carousel>
+
+  <!--3D-->
+  <map-viewer map="maps['vanguard']"
+              lvl2="{{maps['vanguard']['mdlshow'] ? 2 : 4}}"
+              lvl3="2"></map-viewer>
+
 
   <!--update page-->
   <a class="box box-quote" target="_blank"
+     lvl2="3" lvl3="4"
      href="http://www.teamfortress.com/toughbreak/">
-    {{'toughbreak' | translate}}<b>{{'toughbreak2' | translate}}</b>
+    {{'toughbreak' | translate}}<b>
+      {{'toughbreak2' | translate}}</b>
     <div class="date">(17/12/2015)</div>
   </a>
 
   <!--360-->
-  <a class="box box-360" ng-click="go_panorama(maps['vanguard'])">
+  <a class="box box-360"
+     ng-click="go_panorama(maps['vanguard'])"
+     lvl2="5" lvl3="5">
     <img src="../../images/icons/icons-360.png"></img>
   </a>
 

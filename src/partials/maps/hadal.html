@@ -3,13 +3,15 @@
   <map-summary map="maps['hadal']"></map-summary>
 
   <!--carousel-->
-  <map-carousel map="maps['hadal']" important="2"></map-carousel>
+  <map-carousel map="maps['hadal']" lvl3="2"></map-carousel>
 
   <!--3D-->
-  <map-viewer map="maps['hadal']"></map-viewer>
+  <map-viewer map="maps['hadal']"
+              lvl3="{{maps['hadal']['mdlshow'] ? 1 : 2}}"></map-viewer>
 
   <!--360-->
-  <a class="box box-360" ng-click="go_panorama(maps['hadal'])" important="2">
+  <a class="box box-360" ng-click="go_panorama(maps['hadal'])"
+     lvl3="2">
     <img src="../../images/icons/icons-360.png"></img>
   </a>
 
