@@ -85,6 +85,11 @@ $hx: 100%;
     color: white;
     padding: 17px 25px;
     position: relative;
+    img.title {
+        margin-top: -20%;
+        height: auto;
+        width: 100%;
+    }
     h2 {
         font-size: 35px;
         line-height: 40px;
@@ -99,13 +104,8 @@ $hx: 100%;
         font-size: 14px;
         line-height: 21px;
     }
-    .install{
-        i { color: #404040; }
-    }
-    img.title {
-        margin-top: -20%;
-        height: auto;
-        width: 100%;
+    .subtext {
+        color: #404040;
     }
 }
 @mixin transition($property:'all', $duration:0.3s,

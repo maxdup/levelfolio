@@ -157,6 +157,9 @@ a.box { @include box-click; }
                 i { color: #bbbbbb; }
             }
         }
+        .install{
+            i { color: #404040; }
+        }
         h3 { font-size: 30px; }
         &>div {
             padding: 20px 20px 40px;
