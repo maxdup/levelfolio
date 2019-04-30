@@ -97,21 +97,66 @@ a.box { @include box-click; }
 
 .box-main {
     @extend .box-blurb;
+    position: relative;
+    overflow: hidden;
     height: 100%;
-    .install-box {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
+    height: calc(100% - 10px);
+    min-height: 390px;
+    .blurb {
+        padding-bottom: 100px;
     }
-    .install {
+    .install-box {
+        @extend .box-blurb;
+        position: absolute;
+        overflow-y: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        >div {
+            position: relative;
+            min-height: 100%;
+            .blurb {
+                position: relative;
+                padding-right: 0;
+                padding-left: 0;
+                padding-top: 0;
+            }
+        }
+    }
+    div.play{
         position: absolute;
         z-index: 2;
         bottom: 0;
+        left: 0;
+        right: 0;
+        a {
+            cursor: pointer;
+            float: right;
+
+            margin-bottom: 20px;
+            padding: 15px 10px;
+            border: solid 2px #333;
+            @include border-radius(3px);
+
+            color: white;
+            font-size: 22px;
+            line-height: 110%;
+            &:hover {
+                @include background(
+                    radial-gradient(center,
+                                    rgba(255,255,255,0),
+                                    rgba(255,255,255,0.1)));
+                text-decoration: none;
+            }
+        }
+    }
+    .install {
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        right: 0;
+        left: 0;
         color: white;
         width: 100%;
         padding: 10px;
@@ -121,29 +166,6 @@ a.box { @include box-click; }
         }
         &.ng-hide-remove, &.ng-hide-add {
             @include transition(bottom);
-        }
-        a.play {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            float: right;
-            padding-bottom: 10px;
-            padding-right: 25px;
-            cursor: pointer;
-            color: white;
-            font-size: 22px;
-            line-height: 110%;
-            margin: 20px 20px 30px 0;
-            padding: 15px 10px;
-            border: solid 2px #333;
-            @include border-radius(3px);
-            &:hover {
-                @include background(
-                    radial-gradient(center,
-                                    rgba(255,255,255,0),
-                                    rgba(255,255,255,0.1)));
-                text-decoration: none;
-            }
         }
         a.icon {
             display: inline-block;
@@ -207,8 +229,9 @@ a.box { @include box-click; }
 
 .box-photo {
     @include box-h($hx);
+    height: 100%;
+    height: calc(100% - 10px);
     max-height: 590px;
-
     width: 340px;
     overflow: hidden;
     position: relative;

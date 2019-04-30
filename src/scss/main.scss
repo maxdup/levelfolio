@@ -711,6 +711,9 @@ i.lvl {
         &:nth-child(odd){
             margin-top: 40px;
         }
+        &.box-blurb .blurb {
+            padding-bottom: 100px;
+        }
     }
 }
 #code {
