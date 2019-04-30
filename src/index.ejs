@@ -1,29 +1,35 @@
 <!doctype html>
-<html lang="en" ng-app="folioApp" ng-strict-di ng-controller="RootController">
+<html lang="en" ng-app="folioApp" ng-strict-di
+      ng-controller="RootController">
 <head>
   <meta charset="utf-8">
   <title>Maxime Dupuis</title>
   <base href="/"/>
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=0.75, user-scalable=0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+                                 maximum-scale=0.75, user-scalable=0"/>
 </head>
 
-<body>
-  <div id="scrollable" ng-class="{'hidden':focus360}">
-    <!-- Map panoramas -->
-    <div class="pano-clickable" ng-click="focus360 = true"></div>
-    <map-panorama ng-model="current_panorama" focus="focus360">
-    </map-panorama>
+<body ng-class="{'panorama':focus360}">
+  <!-- Map panoramas -->
+  <map-panorama ng-model="current_panorama" focus="focus360">
+  </map-panorama>
 
-    <!-- Navigation + page background-->
-    <div class="page-centering page-background"></div>
-    <div class="page-centering page-nav">
-      <navbar></navbar>
-    </div>
+  <!-- page background -->
+  <div class="page-centering page-background"></div>
+
+  <!-- site navigation -->
+  <div class="page-centering page-nav">
+    <navbar></navbar>
+  </div>
+
+  <!-- scrollable container -->
+  <div id="scrollable">
+    <div class="pano-clickable" ng-click="focus360 = true"></div>
+
+    <!-- site content -->
     <div class="page-centering">
       <div class="content" id="content">
-        <ui-view ng-class="{ reverse: reverse}"
-                 class="view"></ui-view>
+        <ui-view ng-class="{ reverse: reverse}" class="view"></ui-view>
       </div>
     </div>
   </div>

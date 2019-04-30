@@ -110,7 +110,6 @@ body {
     top: 0;
     left: 0;
     margin: auto;
-    @include transition(transform opacity);
 }
 @media screen and (min-height: 840px){
     .page-centering{
@@ -118,28 +117,42 @@ body {
         bottom: 2%;
     }
 }
-.page-nav {
+.page-nav, .page-background {
     position: fixed;
     width: 0;
     min-width: 0;
+    max-width: 0;
     z-index: 1000;
+    overflow: visible;
+    @include opacity(1);
+    @include transform(translateX(0));
+    @include transition(transform opacity, 0.5s);
 }
+
 .page-background {
-    @include page-base;
-    z-index:-1 ;
-    position: fixed;
-    background: #202020;
-    @include opacity(0.90);
+    z-index: 1;
+    &:before {
+        @include page-base;
+        content: '';
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        max-height: 840px;
+        display: block;
+        background: #202020;
+        @include opacity(0.90);
+    }
 }
 .page-padded {
     padding: 20px 100px;
 }
 .pano-clickable {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    height: 100%;
     cursor: pointer;
 }
 
@@ -192,23 +205,27 @@ ui-view {
     }
 }
 #scrollable {
-    &.hidden {
-        .pano-clickable {
-            display: none;
-        }
-        .page-centering {
-            @include transform(translateX(100vw));
-            @include opacity(0);
-            z-index: -1000;
-        }
-    }
     position: fixed;
+    z-index: 2;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    overflow-x: scroll;
     overflow-y: hidden;
+    overflow-x: hidden; //fallback
+    overflow-x: overlay; //for Chrome
+    @include opacity(1);
+    @include transform(translateX(0));
+    @include transition(transform opacity, 0.5s);
+}
+body.panorama {
+    #scrollable, .page-background, .page-nav {
+        @include opacity(0);
+        @include transform(translateX(100vw));
+        .pano-clickable {
+            display: none;
+        }
+    }
 }
 
 isotope, .isotope-container {
@@ -767,14 +784,17 @@ i.lvl {
     }
 }
 map-panorama, #panorama, body>canvas {
-    z-index: -1;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 }
+map-panorama {
+    z-index: 1;
+}
 #panorama {
+    z-index: 0;
     cursor: grab;
     &:active {
         cursor: grabbing;
