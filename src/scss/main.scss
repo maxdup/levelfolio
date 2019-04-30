@@ -34,7 +34,7 @@ h2 {
     font-size: 3.56rem;
     line-height: 110%;
     margin: 1.78rem 0 1.424rem 0; }
-.withsubs { margin-bottom: 0;}
+
 
 h3 {
     font-size: 2.92rem;
@@ -702,20 +702,17 @@ i.lvl {
         list-style-type: none;
         padding-left: 15px;
 	    padding-bottom: 12px;
+        a {
+            text-decoration: none;
+            color: white;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .box {
         @include blurb;
-        a {
-            font-size: 20px;
-            color: white;
-            text-decoration: none;
-            &:hover {
-                span {
-                    text-decoration: underline;
-                }
-            }
-        }
         ul.links {
             li {
                 margin: 20px 0px;
@@ -724,6 +721,13 @@ i.lvl {
                 font-size: 50px;
 		        margin-right: 10px;
                 vertical-align:middle;
+            }
+            a {
+                font-size: 20px;
+                &:hover {
+                    text-decoration: none;
+                    span { text-decoration: underline; }
+                }
             }
         }
 	    .available { color: #20ff40; }
