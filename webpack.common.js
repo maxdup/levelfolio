@@ -9,6 +9,7 @@ module.exports = {
     app: './src/app.js',
   },
   output: {
+    path: path.resolve(__dirname, 'deploy'),
     publicPath: '/',
     filename: '[name].[contenthash].bundle.js'
   },
