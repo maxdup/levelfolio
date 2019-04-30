@@ -106,11 +106,17 @@ body {
     max-height: 840px;
     min-width: 100%;
     position: absolute;
-    top: 2%;
-    bottom: 2%;
+    bottom: 0;
+    top: 0;
     left: 0;
     margin: auto;
     @include transition(transform opacity);
+}
+@media screen and (min-height: 840px){
+    .page-centering{
+        top: 2%;
+        bottom: 2%;
+    }
 }
 .page-nav {
     position: fixed;
@@ -142,12 +148,13 @@ body {
     position: relative;
     height: 100%;
     overflow: hidden;
-    margin-top: 8px;
-    padding-top: 125px;
+    padding-top: 130px;
 }
 ui-view {
     position: relative;
     height: 100%;
+    min-height: 430px;
+    padding-bottom: 30px;
     white-space: nowrap;
     display: inline-block;
     margin-left: 100px;
@@ -713,27 +720,51 @@ i.lvl {
 
     .box {
         @include blurb;
-        ul.links {
-            li {
-                margin: 20px 0px;
-            }
-            .lvl{
-                font-size: 50px;
-		        margin-right: 10px;
-                vertical-align:middle;
-            }
-            a {
-                font-size: 20px;
-                &:hover {
-                    text-decoration: none;
-                    span { text-decoration: underline; }
+        &.links {
+            @include box-h($h1);
+            @include box-w($w2);
+
+            ul {
+                li {
+                    margin: 7px 0px;
+                    i.lvl { font-size: 40px; }
+                    display: inline-block;
+                    min-width: 250px;
+                }
+                .lvl{
+                    font-size: 50px;
+		            margin-right: 10px;
+                    vertical-align:middle;
+                }
+                a {
+                    font-size: 20px;
+                    &:hover {
+                        text-decoration: none;
+                        span { text-decoration: underline; }
+                    }
                 }
             }
+            &.lvl2 {
+                @include box-h($h1);
+                @include box-w($w2);
+            }
+
         }
-	    .available { color: #20ff40; }
+        .available { color: #20ff40; }
         .unavailable { color: #ff3010; }
     }
-    .box-cv { @include box-h($h12); }
+}
+@media screen and (min-height: 760px){
+    #contact {
+        .box.links {
+            ul li {
+                margin: 12px 0px;
+                i.lvl { font-size: 50px; }
+            }
+            @include box-h($h2);
+            @include box-w($w1);
+        }
+    }
 }
 map-panorama, #panorama, body>canvas {
     z-index: -1;
