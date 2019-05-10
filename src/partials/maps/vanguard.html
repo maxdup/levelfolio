@@ -8,7 +8,7 @@
                 lvl2="1" lvl3="3"></map-carousel>
 
   <!--3D-->
-  <map-viewer map="maps['vanguard']"
+  <map-viewer map="maps['vanguard']" title="{{'3d-title'| translate}}"
               lvl2="{{maps['vanguard']['mdlshow'] ? 2 : 4}}"
               lvl3="2"></map-viewer>
 
@@ -25,7 +25,7 @@
   <!--360-->
   <a class="box box-360"
      ng-click="go_panorama(maps['vanguard'])"
-     lvl2="5" lvl3="5">
+     lvl2="5" lvl3="5" title="{{'360-title'| translate}}">
     <img src="../../images/icons/icons-360.png"></img>
   </a>
 

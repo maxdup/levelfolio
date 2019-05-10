@@ -10,7 +10,7 @@
   <!--3d-->
   <map-viewer map="maps['occult']"
               lvl2="{{maps['occult']['mdlshow'] ? 2 : 4}}"
-              lvl3="2"></map-viewer>
+              lvl3="2" title="{{'3d-title'| translate}}"></map-viewer>
 
   <!--quote-->
   <a class="box box-quote"
@@ -22,7 +22,7 @@
 
   <!--360-->
   <a class="box box-360" ng-click="go_panorama(maps['occult'])"
-     lvl2="5" lvl3="5">
+     lvl2="5" lvl3="5" title="{{'360-title'| translate}}">
     <img src="../../images/icons/icons-360.png"></img>
   </a>
 
