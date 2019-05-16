@@ -3,12 +3,14 @@
 <div class="carousel-controls" ng-show="slides.length > 1">
   <!-- left -->
   <a role="button" class="button-left" ng-click="prev()"
-     ng-class="{ disabled: isPrevDisabled() }">
+     ng-class="{ disabled: isPrevDisabled() }"
+     title="{{'carousel-next'| translate}}">
     <i class="lvl lvl-chevron-left"></i>
   </a>
   <!-- right -->
   <a role="button" class="button-right" ng-click="next()"
-     ng-class="{ disabled: isNextDisabled() }">
+     ng-class="{ disabled: isNextDisabled() }"
+     title="{{'carousel-prev'| translate}}">
     <i class="lvl lvl-chevron-right"></i>
   </a>
   <!-- progess -->
@@ -18,10 +20,12 @@
     </td></tr>
   </table>
   <!-- fullscreen button -->
-  <a class="button-fullscreen" ng-click="$parent.open_modal()">
+  <a class="button-fullscreen" ng-click="$parent.open_modal()"
+     title="{{'carousel-fullscreen'| translate}}">
     <i class="lvl lvl-md-expand"></i>
   </a>
   <!-- fullscreen space -->
-  <a class="space-fullscreen" ng-click="$parent.open_modal()"></a>
+  <a class="space-fullscreen" ng-click="$parent.open_modal()"
+     title="{{'carousel-fullscreen'| translate}}"></a>
 
 </div>

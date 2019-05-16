@@ -6,7 +6,8 @@
         <p>{{ map.name | translate}}</p>
       </div>
       <div class="play">
-        <a ng-click="install = !install" title="{{'wanttoplay'| translate}}">
+        <a ng-click="install = !install"
+           title="{{'wanttoplay-title'| translate}}">
           {{'wanttoplay' | translate}}
         </a>
       </div>
@@ -42,7 +43,8 @@
           </a>
         </li>
       </ol>
-      <a class="icon" ng-click="install = !install">
+      <a class="icon" ng-click="install = !install"
+         title="{{'modal-close'| translate}}">
         <i class="lvl lvl-chevron-down"></i>
       </a>
     </div>
