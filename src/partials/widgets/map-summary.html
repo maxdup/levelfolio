@@ -6,7 +6,9 @@
         <p>{{ map.name | translate}}</p>
       </div>
       <div class="play">
-        <a ng-click="install = !install">{{'wanttoplay' | translate}}</a>
+        <a ng-click="install = !install" title="{{'wanttoplay'| translate}}">
+          {{'wanttoplay' | translate}}
+        </a>
       </div>
     </div>
   </div>
