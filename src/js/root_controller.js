@@ -23,6 +23,7 @@ function rootController(
 
   // Include templates
   $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
+  $templateCache.put('snowville', require('../partials/maps/snowville.html'));
   $templateCache.put('effigy', require('../partials/maps/effigy.html'));
   $templateCache.put('occult', require('../partials/maps/occult.html'));
   $templateCache.put('hadal', require('../partials/maps/hadal.html'));

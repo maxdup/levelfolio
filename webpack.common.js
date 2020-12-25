@@ -16,7 +16,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     inline: true,
-    port: 8080,
+    port: 8000,
     stats: 'errors-only',
     historyApiFallback: true
   },

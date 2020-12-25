@@ -33,12 +33,17 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       })
       .state('commercial', {
         url: '/commercial',
-        template: require('./partials/pages/commercial.html')
+        controller: 'PageController',
+        template: require('./partials/pages/maps.html')
+      })
+      .state('commercial.id',{
+        url: '/:map',
+        params: {'map': null}
       })
       .state('hobby',{
         url: '/hobby',
         controller: 'PageController',
-        template: require('./partials/pages/hobby.html')
+        template: require('./partials/pages/maps.html')
       })
       .state('hobby.id',{
         url: '/:map',

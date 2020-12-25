@@ -1,8 +1,7 @@
-function pageController(
-  $scope, $stateParams) {
+function pageController($scope, $state, $stateParams) {
   "ngInject"
 
-  function queue() {
+  function queue(level) {
     // Order maps
     var front, k, v, _ref;
     front = {};
@@ -10,7 +9,7 @@ function pageController(
     _ref = $scope.maps;
     for (k in _ref) {
       v = _ref[k];
-      if (v['level'] === 0) {
+      if (v['level'] === level) {
         if (k === $stateParams.map) {
           front = v;
         } else {
@@ -25,7 +24,12 @@ function pageController(
       return $scope.mapsQueue.unshift(front);
     }
   }
-  queue();
+
+  if ($state.$current.includes['commercial']){
+    queue(1);
+  } else if ($state.$current.includes['hobby']){
+    queue(0);
+  }
 }
 
 export default pageController;

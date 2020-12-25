@@ -710,7 +710,8 @@ i.lvl {
         &.box-photo:nth-of-type(1n) { width: 390px; }
         &.box-photo:nth-of-type(2n) { width: 340px; }
         &.box-photo:nth-of-type(3n) { width: 290px; }
-        &.box-photo:nth-of-type(4n) { width: 240px; }
+        &.box-photo:nth-of-type(4n) { width: 260px; }
+        &.box-photo:nth-of-type(5n) { width: 230px; }
         &:nth-child(odd){
             margin-top: 40px;
         }

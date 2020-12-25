@@ -42,6 +42,23 @@ var maps = {
     panorama: require('../images/vanguard/cp_vanguard360.jpg'),
     panorama_angle: 137,
   },
+  snowville: {
+    name: 'snowville',
+    order: 0,
+    partial: "snowville",
+    workid: 'pd_snowville',
+    level: 1,
+    title: require('../images/snowville/snowville.png'),
+    images: [
+      { image: require('../images/snowville/snowville_01.jpg'), id: 0 },
+      { image: require('../images/snowville/snowville_02.jpg'), id: 1 },
+      { image: require('../images/snowville/snowville_03.jpg'), id: 2 },
+      { image: require('../images/snowville/snowville_04.jpg'), id: 3 },
+      { image: require('../images/snowville/snowville_05.jpg'), id: 4 },
+    ],
+    panorama: require('../images/snowville/pd_snowville360.jpg'),
+    panorama_angle: 0,
+  },
   hadal: {
     name: 'hadal',
     order: 2,
