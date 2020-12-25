@@ -4,19 +4,17 @@
       <i class="lvl lvl-chevron-right"></i>
     </div>
   </div>
-  <div class="controls" ng-show="focus && show">
-    <div class="controls" ng-show="!cshow && !controlsGlimpse">
-      <div class="controls360" ng-mouseenter="cshow=true">
-        <div class="info"><i class="lvl lvl-info"></i></div>
-      </div>
+
+  <div class="controls-container" ng-if="focus && show">
+    <div class="controls-hint">
+      <i class="lvl lvl-info"></i>
     </div>
-    <div class="controls" ng-show="(cshow || controlsGlimpse) && show" ng-mouseleave="cshow=false">
-      <div class="controls360" ng-mouseenter="cshow=true" ng-mouseleave="cshow=false">
-        <img src="../../images/icons/icons-lcpan.png"/>
-        <img src="../../images/icons/icons-mczoom.png"/>
-      </div>
+    <div class="controls-hidden">
+      <img src="../../images/icons/icons-lcpan.png"/>
+      <img src="../../images/icons/icons-mczoom.png"/>
     </div>
   </div>
+
   <div id="curtain" class="container-curtain" ng-hide="show">
     <div class="loading" ng-if="focus">
       <div class="icon"><i class="lvl lvl-gear"></i></div>

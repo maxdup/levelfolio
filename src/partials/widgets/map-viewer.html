@@ -1,5 +1,6 @@
 <div class="box box-3d"
      ng-class="{'box-click': !map['mdlshow']}">
+
   <div id="{{map['targetid']}}" class="box-3d-inner">
     <!-- closed -->
     <div class="fill" ng-click="open_model()">
@@ -18,20 +19,14 @@
     </div>
 
     <!-- controls -->
-    <div class="controls3d"
-         ng-if="map['mdlshow'] && loaded"
-         ng-class="{'hidden': $parent.cshow || controlsGlimpse3d}">
-      <div class="info" ng-mouseenter="$parent.cshow=true">
+    <div class="controls-container" ng-if="map['mdlshow'] && loaded">
+      <div class="controls-hint">
         <i class="lvl lvl-info"></i>
       </div>
-    </div>
-    <div class="controls" ng-mouseleave="$parent.cshow=false" ng-if="loaded"
-         ng-show="map['mdlshow'] && ($parent.cshow || controlsGlimpse3d)">
-        <div class="controls3d" ng-mouseleave="cshow=false">
-          <img src="../../images/icons/icons-lcrot.png"/>
-          <img src="../../images/icons/icons-mczoom.png"/>
-          <img src="../../images/icons/icons-rcpan.png"/>
-        </div>
+      <div class="controls-hidden">
+        <img src="../../images/icons/icons-lcrot.png"/>
+        <img src="../../images/icons/icons-mczoom.png"/>
+        <img src="../../images/icons/icons-rcpan.png"/>
       </div>
     </div>
   </div>

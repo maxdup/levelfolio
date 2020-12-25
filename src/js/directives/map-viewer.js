@@ -8,9 +8,6 @@ function map_viewer($animate, $timeout){
     scope: { map: '=' },
     link: function(scope, element) {
 
-      function hidecontrols() {
-        scope.controlsGlimpse3d = false;
-      };
       function layout() {
         scope.$emit('isotopeLayout');
       };
@@ -29,10 +26,8 @@ function map_viewer($animate, $timeout){
         scope.map['mdlshow'] = true;
       };
       scope.$on('mdlloaded', function(event) {
-        scope.controlsGlimpse3d = true;
         scope.loaded = true;
         scope.$apply();
-        $timeout(hidecontrols, 2000);
       });
       scope.$watch("map.mdlshow", function(show, oldShow) {
         $timeout(function(){
@@ -178,14 +173,14 @@ function map_viewer($animate, $timeout){
         camera.position.y = 300;
         camera.position.z = 300;
         camera.lookAt(camera.target);
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        var canvas = angular.element(renderer.domElement);
+        var wrapcontainer = angular.element(container);
+        wrapcontainer.append(renderer.domElement);
+        controls = new THREE.OrbitControls(camera, wrapcontainer[0]);
         controls.enableDamping = true;
         controls.rotateSpeed = 0.5;
         controls.dampingFactor = 1;
         controls.enableZoom = true;
-        var canvas = angular.element(renderer.domElement);
-        var wrapcontainer = angular.element(container);
-        wrapcontainer.append(renderer.domElement);
         if (showHUD) {
           createHUD();
         }
