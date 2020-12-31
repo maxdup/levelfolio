@@ -37,18 +37,6 @@ function map_panorama($window, $timeout, $transitions){
       var isUserInteracting = false;
       scope.show = true;
 
-      function hide_controls(){
-        scope.controlsGlimpse = false;
-      }
-      function preview_controls(){
-        scope.controlsGlimpse = true;
-        $timeout(hide_controls, 2000);
-      }
-      scope.$watch('focus', function(newValue, oldValue){
-        if (scope.focus && scope.show){
-          preview_controls();
-        }
-      });
       function makeCameraVector(longitude, latitude){
         if (!camera.target){
           camera.target = new THREE.Vector3(0,0,0);
@@ -69,7 +57,6 @@ function map_panorama($window, $timeout, $transitions){
           camera.lookAt(camera.target);
           material.map = newmap;
           scope.show = true;
-          preview_controls();
           scope.$apply();
         }
         var newmap = new THREE.TextureLoader().load(
