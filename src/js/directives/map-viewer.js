@@ -3,7 +3,7 @@ function map_viewer($animate, $timeout){
 
   return {
     restrict: 'E',
-    template: require('../../partials/widgets/map-viewer.html'),
+    template: require('../../partials/widgets/map-viewer.html').default,
     replace: true,
     scope: { map: '=' },
     link: function(scope, element) {

@@ -1,9 +1,9 @@
-@import "node_modules/compass-mixins/lib/compass/reset";
-@import "node_modules/compass-mixins/lib/compass";
-@import "node_modules/compass-mixins/lib/animate";
-@import "src/scss/mixins";
-@import "src/scss/navbar";
-@import "src/scss/boxes";
+@import "./node_modules/compass-mixins/lib/compass/reset";
+@import "./node_modules/compass-mixins/lib/compass";
+@import "./node_modules/compass-mixins/lib/animate";
+@import "./src/scss/mixins";
+@import "./src/scss/navbar";
+@import "./src/scss/boxes";
 
 * { @include box-sizing(border-box) }
 

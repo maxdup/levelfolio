@@ -5,7 +5,7 @@ function navbar ($cookies, $translate, $location,
   return {
     restrict: 'E',
     replace: true,
-    template: require('../../partials/widgets/navbar.html'),
+    template: require('../../partials/widgets/navbar.html').default,
     link: function(scope, element){
 
       function checkOverflow(){

@@ -2,7 +2,7 @@ function map_summary (){
   return {
     restrict: 'E',
     replace: true,
-    template: require('../../partials/widgets/map-summary.html'),
+    template: require('../../partials/widgets/map-summary.html').default,
     scope: { map: '=', },
   }
 }

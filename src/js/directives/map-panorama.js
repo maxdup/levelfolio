@@ -3,7 +3,7 @@ function map_panorama($window, $timeout, $transitions){
 
   return {
     restrict: 'E',
-    template: require('../../partials/widgets/map-panorama.html'),
+    template: require('../../partials/widgets/map-panorama.html').default,
     scope: {
       ngModel: '=',
       focus: '='

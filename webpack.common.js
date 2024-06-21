@@ -1,12 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: 'development',
+  context: path.join(__dirname, 'src'),
   entry: {
-    app: './src/app.js',
+    app: './app.js',
   },
   output: {
     path: path.resolve(__dirname, 'deploy'),
@@ -14,11 +16,8 @@ module.exports = {
     filename: '[name].[contenthash].bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    inline: true,
     port: 8000,
-    stats: 'errors-only',
-    historyApiFallback: true
+    watchFiles: ['src/**/*']
   },
   module: {
     rules: [{
@@ -26,37 +25,30 @@ module.exports = {
       exclude: /node-modules/,
       loader: 'babel-loader',
     },{
-      test: /\.css$/,
-      use: [{ loader: 'style-loader'},
-            { loader: 'css-loader'}]
-    },{
-      test: /\.less$/,
-      use: [{ loader: 'style-loader'},
-            { loader: 'css-loader'},
-            { loader: 'less-loader'}]
-    },{
       test: /\.scss$/,
-      use: [{ loader: 'style-loader' },
+      use: [MiniCssExtractPlugin.loader,
             { loader: 'css-loader' },
             { loader: 'sass-loader' }]
     },{
       test: /\.(html)$/,
       loader: 'html-loader'
     },{
-      test: /\.(png|jpg|gif|obj|mtl)$/,
-      use: [{
-        loader: 'file-loader',
-        options: { outputPath: 'files'}
-      }]
-    },{
       test: /\.font\.js/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            url: false
+          }
+        },
         'webfonts-loader']
     },{
       test: /\.svg$/,
       loader: 'svg-inline-loader'
+    },{
+      test: /\.(woff|woff2|eot|ttf|otf|svg|jpg|jpeg|png|gif|webp|mtl|obj)$/i,
+      type: 'asset/resource',
     }]
   },
   plugins: [
@@ -64,15 +56,14 @@ module.exports = {
       filename: 'app.bundle.[contenthash].css'
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.ejs',
-      inject: true,
+      template: './index.ejs',
       chunks: ['app'],
       filename: 'index.html'
     }),
-    new CopyPlugin([
-      { from: 'src/files', to: 'files' },
-      { from: 'src/_redirects' },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [{from: 'static', to: 'static'},
+                 {from: 'meta'}],
+    }),
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery',
       jQuery: 'jquery',

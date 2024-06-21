@@ -7,7 +7,7 @@ function modal_image(ModalService, $transitions){
       var modalInstance;
       element.on('click', function(){
         ModalService.showModal({
-          template: require("../../partials/widgets/modal.html"),
+          template: require("../../partials/widgets/modal.html").default,
           controller: function($scope, imagePath, close) {
             "ngInject"
 

@@ -22,14 +22,14 @@ function rootController(
   angular.element(scrolldiv).bind('wheel', scroll);
 
   // Include templates
-  $templateCache.put('vanguard', require('../partials/maps/vanguard.html'));
-  $templateCache.put('snowville', require('../partials/maps/snowville.html'));
-  $templateCache.put('effigy', require('../partials/maps/effigy.html'));
-  $templateCache.put('occult', require('../partials/maps/occult.html'));
-  $templateCache.put('hadal', require('../partials/maps/hadal.html'));
+  $templateCache.put('vanguard', require('../partials/maps/vanguard.html').default);
+  $templateCache.put('snowville', require('../partials/maps/snowville.html').default);
+  $templateCache.put('effigy', require('../partials/maps/effigy.html').default);
+  $templateCache.put('occult', require('../partials/maps/occult.html').default);
+  $templateCache.put('hadal', require('../partials/maps/hadal.html').default);
   $templateCache.put("uib/template/carousel/slide.html","");
   $templateCache.put('uib/template/carousel/carousel.html',
-                     require('../partials/widgets/carousel.html'));
+                     require('../partials/widgets/carousel.html').default);
 
   // Load maps data
   $scope.maps = require('./maps_meta.js').default;

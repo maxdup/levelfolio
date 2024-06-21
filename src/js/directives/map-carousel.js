@@ -4,14 +4,14 @@ function map_carousel (ModalService, $transitions){
   return {
     restrict: 'E',
     replace: true,
-    template: require('../../partials/widgets/map-carousel.html'),
+    template: require('../../partials/widgets/map-carousel.html').default,
     scope: { map: '=', },
     link: function(scope, element, attrs){
       var modalInstance;
 
       scope.open_modal = function(){
         ModalService.showModal({
-          template: require("../../partials/widgets/modal.html"),
+          template: require("../../partials/widgets/modal.html").default,
           controller: function($scope, close) {
             "ngInject"
             $scope.close = close;

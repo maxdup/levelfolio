@@ -17,8 +17,8 @@ import map_carousel from './js/directives/map-carousel'
 import map_panorama from './js/directives/map-panorama'
 import modal_image from './js/directives/modal-image'
 
-require('./icons.font');
-require('./scss/main.scss');
+import('./font/lvl-icons.font.js');
+import './scss/main.scss';
 
 angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
                             localeModule, 'angularModalService',
@@ -29,12 +29,12 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       .state('home', {
         url: '/',
         auto: true,
-        template: require('./partials/pages/home.html')
+        template: require('./partials/pages/home.html').default
       })
       .state('commercial', {
         url: '/commercial',
         controller: 'PageController',
-        template: require('./partials/pages/maps.html')
+        template: require('./partials/pages/maps.html').default
       })
       .state('commercial.id',{
         url: '/:map',
@@ -43,7 +43,7 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       .state('hobby',{
         url: '/hobby',
         controller: 'PageController',
-        template: require('./partials/pages/maps.html')
+        template: require('./partials/pages/maps.html').default
       })
       .state('hobby.id',{
         url: '/:map',
@@ -52,12 +52,12 @@ angular.module('folioApp', ['ui.router', 'ngCookies', 'ngAnimate',
       .state('code',{
         url: '/code',
         auto: true,
-        template: require('./partials/pages/code.html')
+        template: require('./partials/pages/code.html').default
       })
       .state('contact', {
         url: '/contact',
         auto: true,
-        template: require('./partials/pages/contact.html')
+        template: require('./partials/pages/contact.html').default
       });
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|steam):/);

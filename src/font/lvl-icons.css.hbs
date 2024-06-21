@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "{{fontName}}";
+    src: {{{src}}};
+    font-display: swap;
+}
+
+{{baseSelector}} {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1;
+}
+
+{{baseSelector}}:before,
+{{baseSelector}}:after {
+    font-family: {{fontName}} !important;
+    font-style: normal;
+    font-weight: normal !important;
+    vertical-align: top;
+    display: inline-block;
+    width: 1.25em;
+}
+
+{{#each codepoints}}
+.lvl-{{@key}}:before {
+    content: "\\{{this}}";
+}
+{{/each}}
