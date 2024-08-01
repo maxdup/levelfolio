@@ -2,7 +2,7 @@ function rootController(
   $rootScope, $scope, $state, $transitions, $timeout, $templateCache, $window) {
   "ngInject"
 
-  var  hidecontrols, isUserInteracting, lat, lon, material,
+  var hidecontrols, isUserInteracting, lat, lon, material,
       mesh, onDocumentMouseDown, onDocumentMouseMove, onDocumentMouseUp,
       onDocumentMouseWheel, onMouseDownLat, onMouseDownLon, onPointerDownLat,
       onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, phi,
