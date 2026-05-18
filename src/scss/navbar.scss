@@ -1,3 +1,5 @@
+@use "./mixins" as *;
+
 nav {
     width: 100vw;
     position: relative;
@@ -151,7 +153,7 @@ nav {
             display: block;
             padding: 2px 0;
         }
-        &.ng-hide {
+        &:not(.open) {
             height: 0px;
         }
     }

@@ -1,3 +1,5 @@
+@use "./mixins" as *;
+
 .box { @include box; }
 .box-w1 { @include box-w($w1); }
 .box-w2 { @include box-w($w2); }
@@ -161,10 +163,8 @@ a.box { @include box-click; }
         width: 100%;
         padding: 10px;
 
-        &.ng-hide {
+        &.hidden {
             bottom: -400px;
-        }
-        &.ng-hide-remove, &.ng-hide-add {
             @include transition(bottom);
         }
         a.icon {
@@ -286,6 +286,7 @@ a.box.box-photo {
     .box-3d-inner {
         @include box;
         @include transition(height width, 0.3s, ease);
+        outline: none;
         .controls, .controls3d {
             display: none;
         }
@@ -311,6 +312,10 @@ a.box.box-photo {
         }
         .controls, .controls3d {
             display: inline-block;
+        }
+        .box-3d-inner {
+            @include box-w($w2);
+            @include box-h($hx);
         }
     }
 

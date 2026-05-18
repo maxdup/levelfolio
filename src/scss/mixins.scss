@@ -1,3 +1,13 @@
+// Native CSS stubs replacing compass vendor-prefix mixins
+@mixin box-sizing($val) { box-sizing: $val; }
+@mixin opacity($val) { opacity: $val; }
+@mixin transform($val) { transform: $val; }
+@mixin border-radius($val) { border-radius: $val; }
+@mixin background($val) { background: $val; }
+@mixin text-shadow($val...) { text-shadow: $val; }
+@mixin animation($val) { animation: $val; }
+
+// Page base
 @mixin page-base {
     position: relative;
     width: 100%;
@@ -11,13 +21,12 @@ $h1: 190px;
 $h2: 390px;
 $h12: 290px;
 $hx: 100%;
+
 @mixin base-button {
     cursor: pointer;
     @include opacity(0.5);
     text-align: center;
-    &:hover {
-        @include opacity(0.9);
-    }
+    &:hover { @include opacity(0.9); }
 }
 @mixin x-button {
     @include base-button;
@@ -26,8 +35,8 @@ $hx: 100%;
     right: 10px;
 }
 
-@mixin box-w($wn){ width: $wn; }
-@mixin box-h($hn){ height: $hn; }
+@mixin box-w($wn) { width: $wn; }
+@mixin box-h($hn) { height: $hn; }
 @mixin box {
     @include box-w($w1);
     @include box-h($h1);
@@ -47,12 +56,9 @@ $hx: 100%;
     border: 2px solid black;
     text-decoration: none;
     background: #000000;
-    @include transition(background, 0.2s);
+    transition: background 0.2s;
     &:hover {
-        @include background(
-            radial-gradient(ellipse at center,
-                            rgba(5,5,5,1) 50%,
-                            rgba(37,37,37,1)));
+        background: radial-gradient(ellipse at center, rgba(5,5,5,1) 50%, rgba(37,37,37,1));
     }
     &:active { text-decoration: none; }
     &:focus { text-decoration: none; }
@@ -63,24 +69,15 @@ $hx: 100%;
     &:before {
         content: '';
         position: absolute;
-        @include background(
-            radial-gradient(ellipse at center,
-                            rgba(255,255,255,0.02) 20%,
-                            rgba(255,255,255,0.1)));
-        bottom: 2px;
-        right: 2px;
-        left: 2px;
-        top: 2px;
+        background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 20%, rgba(255,255,255,0.1));
+        bottom: 2px; right: 2px; left: 2px; top: 2px;
         z-index: 4;
         @include opacity(0);
-        @include transition(opacity, 0.2s);
+        transition: opacity 0.2s;
     }
-    &:hover {
-        &:before {
-            @include opacity(1);
-        }
-    }
+    &:hover:before { @include opacity(1); }
 }
+
 @mixin blurb {
     color: white;
     padding: 17px 25px;
@@ -95,29 +92,16 @@ $hx: 100%;
         line-height: 40px;
         margin-top: 18px;
         margin-bottom: 15px;
-        &.withsubtext {
-            margin-bottom: 4px;
-        }
+        &.withsubtext { margin-bottom: 4px; }
     }
-    .subtext {
-        font-size: 14px;
-        font-weight: normal;
-    }
-    p {
-        margin: 10px 0;
-        padding-top: 5px;
-    }
-    p, div {
-        font-size: 14px;
-        line-height: 21px;
-    }
-    .subtext {
-        color: #404040;
-    }
+    .subtext { font-size: 14px; font-weight: normal; }
+    p { margin: 10px 0; padding-top: 5px; }
+    p, div { font-size: 14px; line-height: 21px; }
+    .subtext { color: #404040; }
 }
-@mixin transition($property:'all', $duration:0.3s,
-                  $function:'cubic-bezier(0.250, 0.460, 0.450, 0.940)'){
-    @include transition-property($property);
-    @include transition-duration($duration);
-    @include transition-timing-function($function);
+
+@mixin transition($property: 'all', $duration: 0.3s, $function: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)') {
+    transition-property: #{$property};
+    transition-duration: $duration;
+    transition-timing-function: #{$function};
 }
