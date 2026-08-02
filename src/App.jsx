@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { createRef, useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { Navbar } from './components/Navbar'
@@ -54,6 +54,16 @@ export function App() {
 
   const transitionClass = reverseRef.current ? 'page-rev' : 'page'
 
+  // One ref per route: the exiting and entering pages are mounted at the same
+  // time, so they can't share one. React 19 dropped findDOMNode, which is what
+  // CSSTransition falls back to without a nodeRef.
+  const nodeRefs = useRef(new Map())
+  let nodeRef = nodeRefs.current.get(location.pathname)
+  if (!nodeRef) {
+    nodeRef = createRef()
+    nodeRefs.current.set(location.pathname, nodeRef)
+  }
+
   return (
     <>
       <MapPanorama />
@@ -72,10 +82,12 @@ export function App() {
             <TransitionGroup component={null}>
               <CSSTransition
                 key={location.pathname}
+                nodeRef={nodeRef}
                 classNames={transitionClass}
                 timeout={650}
+                onExited={() => nodeRefs.current.delete(location.pathname)}
               >
-                <div className="page-view">
+                <div className="page-view" ref={nodeRef}>
                   <Routes location={location}>
                     <Route path="/" element={<Home />} />
                     <Route path="/commercial" element={<MapsPage level="commercial" />} />
